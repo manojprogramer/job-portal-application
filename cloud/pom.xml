@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.manoj.job</groupId>
+        <groupId>com.manoj.job</groupId>
         <artifactId>job-portal-system</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath><!-- lookup parent from repository -->
@@ -14,9 +14,5 @@
 
     <name>job-portal-cloud</name>
     <description>cloud infrastructure module</description>
-
-    <modules>
-
-    </modules>
 
 </project>

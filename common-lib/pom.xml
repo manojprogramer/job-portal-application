@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.manoj.job</groupId>
+        <groupId>com.manoj.job</groupId>
         <artifactId>job-portal-system</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
@@ -11,7 +11,7 @@
 
 
     <artifactId>job-portal-common-lib</artifactId>
-    <packaging>pom</packaging>
+
 
     <name>job-portal-common</name>
     <description>Shared Library -enums, exceptions, and DTOs for all services</description>
@@ -24,14 +24,14 @@
         </dependency>
 
         <dependency>
-            <groupId>com.fasterxml.jacson.core</groupId>
+            <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>AnnotationProcessor</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -40,6 +40,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring.boot.version}</version>
                 <configuration>
                     <skip>true</skip>
                 </configuration>
