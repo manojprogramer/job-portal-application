@@ -1,9 +1,11 @@
 package com.manoj.job_portal_user_service.security;
 
+
+
+
 import com.manoj.job_portal_user_service.model.User;
 import com.manoj.job_portal_user_service.repo.UserRepo;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToUrl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

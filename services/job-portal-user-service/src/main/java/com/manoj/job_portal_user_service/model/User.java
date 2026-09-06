@@ -1,11 +1,13 @@
 package com.manoj.job_portal_user_service.model;
 
+
 import com.manoj.job.domain.UserRole;
 import com.manoj.job.domain.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
 
 import java.time.LocalDateTime;
 

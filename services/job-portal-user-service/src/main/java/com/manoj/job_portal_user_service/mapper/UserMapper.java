@@ -3,6 +3,9 @@ package com.manoj.job_portal_user_service.mapper;
 import com.manoj.job.dto.response.UserResponse;
 import com.manoj.job_portal_user_service.model.User;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class UserMapper {
     public static UserResponse toDTO(User user){;
         UserResponse dto = new UserResponse();
@@ -20,5 +23,8 @@ public class UserMapper {
         return dto;
 
 
+    }
+    public static List<UserResponse> toDTOList(List<User> user){;
+        return user.stream().map(UserMapper::toDTO).collect(Collectors.toList());
     }
 }

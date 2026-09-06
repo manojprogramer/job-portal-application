@@ -1,5 +1,6 @@
 package com.manoj.job.dto.response;
 
+
 import com.manoj.job.domain.UserRole;
 import com.manoj.job.domain.UserStatus;
 import lombok.Data;
