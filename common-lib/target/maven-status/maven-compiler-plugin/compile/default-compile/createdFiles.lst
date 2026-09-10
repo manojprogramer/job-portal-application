@@ -1,0 +1,3 @@
+com\manoj\job\domain\UserStatus.class
+com\manoj\job\domain\UserRole.class
+com\manoj\job\dto\response\UserResponse.class

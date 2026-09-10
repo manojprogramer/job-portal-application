@@ -30,8 +30,8 @@ public class UserController {
         return  ResponseEntity.ok(userService.updateProfile(email,req));
     }
     @GetMapping("profile/{userId}")
-    public ResponseEntity<UserResponse> getByUserId(@PathVariable Long id) throws Exception {
-        return ResponseEntity.ok(UserMapper.toDTO(userService.getUserById(id)));
+    public ResponseEntity<UserResponse> getByUserId(@PathVariable Long userId) throws Exception {
+        return ResponseEntity.ok(UserMapper.toDTO(userService.getUserById(userId)));
     }
     @GetMapping("/users")
     public ResponseEntity<List<UserResponse>> getUsers(){
