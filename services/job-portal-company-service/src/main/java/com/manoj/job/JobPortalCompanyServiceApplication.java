@@ -1,4 +1,4 @@
-package com.maoj.job;
+package com.manoj.job;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

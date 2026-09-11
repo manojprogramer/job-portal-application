@@ -1,4 +1,4 @@
-package com.maoj.job.controller;
+package com.manoj.job.controller;
 
 import com.manoj.job.domain.UserRole;
 import org.springframework.web.bind.annotation.GetMapping;

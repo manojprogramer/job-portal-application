@@ -1,4 +1,4 @@
-package com.maoj.job;
+package com.manoj.job;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
