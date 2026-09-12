@@ -25,6 +25,12 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true,nullable = false)
+    private String email;
+
+    @Column(unique = true, nullable = false)
+    private String phone;
+
     @Column(unique = true, nullable = false)
     private String name;
     @Column(unique = true)
@@ -34,7 +40,7 @@ public class Company {
     private String logoUrl;
     private String coverImageUrl;
     private String website;
-    private int foundedYear;
+    private String foundedYear;
 
     @Enumerated(EnumType.STRING)
     private CompanySize companySize;
@@ -46,18 +52,19 @@ public class Company {
     private IndustryType industryType;
 
     @Enumerated(EnumType.STRING)
-    private CompanyStatus companyStatus;
+    private CompanyStatus status;
 
     @Column(unique = true)
     private String registrationNumber;
 
     @Column(nullable = false, unique = true)
-    private String ownerId;
+    private Long ownerId;
 
     @ElementCollection
     private List<SocialLink> socialLink = new ArrayList<>();
 
     private Boolean active = true;
+    private Boolean isVerified = false;
 
     @CreationTimestamp
     @Column(nullable = false, updatable = false)

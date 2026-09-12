@@ -22,7 +22,6 @@ public class CompanyRequest {
     private String tagLine;
     private String description;
 
-
     private String logoUrl;
     private String coverImageUrl;
 

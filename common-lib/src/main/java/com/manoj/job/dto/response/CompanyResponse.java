@@ -25,7 +25,7 @@ public class CompanyResponse {
     private String logoUrl;
     private String coverImageUrl;
     private String website;
-    private int foundedYear;
+    private String foundedYear;
 
     private CompanySize companySize;
     private CompanyType companyType;
@@ -34,7 +34,7 @@ public class CompanyResponse {
     private Boolean verified;
     private Boolean active;
 
-    private String ownerId;
+    private Long ownerId;
 
     private List<SocialLinkResponse> socialLinks;
 
