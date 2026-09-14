@@ -97,11 +97,11 @@ public class CompanyServiceImpl implements CompanyService{
     public CompanyResponse updateCompany(Long companyId, Long ownerId, CompanyRequest request) throws Exception {
         Company company = getCompanyEntityById(companyId);
         if(!company.getName().equals(request.getName() )&& companyRepo.existsByName(request.getName()))
-            throw new Exception("Company Already Exists");
+            throw new Exception("Company Name Already Exists");
         if(request.getRegistrationNumber() != null &&
                 !request.getRegistrationNumber().equals(company.getRegistrationNumber()) &&
                 companyRepo.existsByRegistrationNumber(request.getRegistrationNumber()))
-            throw new Exception("Company Already Exists");
+            throw new Exception("Company Registration Number Already Exists");
         company.setName(request.getName());
         company.setTagLine(request.getTagLine());
         company.setDescription(request.getDescription());
@@ -149,7 +149,15 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     @Override
+    public CompanyResponse activateCompany(Long companyId) throws Exception {
+        Company c = getCompanyEntityById(companyId);
+        c.setStatus(CompanyStatus.ACTIVE);
+        c.setIsVerified(false);
+        return CompanyMapper.toResponse(c);
+    }
+
+    @Override
     public Company getCompanyEntityById(Long companyId) throws Exception {
-        return companyRepo.findByOwnerId(companyId).orElseThrow(()-> new Exception("Company Not Found By Id"));
+        return companyRepo.findById(companyId).orElseThrow(()-> new Exception("Company Not Found By Id"));
     }
 }
