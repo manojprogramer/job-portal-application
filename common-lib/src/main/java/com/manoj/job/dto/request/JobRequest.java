@@ -18,8 +18,11 @@ import java.util.Set;
 public class JobRequest {
     @NotBlank(message = "job title is required")
     private String title;
+    @NotBlank(message = "Job Description is required")
+    private String description;
 
     private String address;
+    private String city;
     private String state;
     private String country;
     private String zipcode;

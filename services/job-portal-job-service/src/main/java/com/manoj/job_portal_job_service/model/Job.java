@@ -5,7 +5,6 @@ import com.manoj.job.domain.JobStatus;
 import com.manoj.job.domain.JobType;
 import com.manoj.job.domain.WorkMode;
 import com.manoj.job_portal_job_service.model.embeddable.JobLocation;
-import com.manoj.job_portal_job_service.model.embeddable.JobType;
 import com.manoj.job_portal_job_service.model.embeddable.SalaryRange;
 import jakarta.persistence.*;
 import lombok.*;
@@ -74,7 +73,7 @@ public class Job {
 
     private LocalDate expiredAt;
 
-    private boolean active = true;
+    private Boolean active = true;
 
     @CreationTimestamp
     @Column(nullable = false)
@@ -87,8 +86,5 @@ public class Job {
     private LocalDateTime publishedAt;
 
     private LocalDateTime closedAt;
-
-
-
 
 }

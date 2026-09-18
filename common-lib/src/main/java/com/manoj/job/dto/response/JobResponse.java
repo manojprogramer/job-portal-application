@@ -24,7 +24,7 @@ public class JobResponse {
     private String responsibilities;
     private String benefits;
 
-    private CompanySummaryResponse companySummaryResponse;
+    private CompanyResponse companyResponse;
     private Long employerId;
 
 //    private JobCategoryReponse jobCategoryReponse;
