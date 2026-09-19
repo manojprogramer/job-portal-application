@@ -54,7 +54,7 @@ public class JobResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime publishedAt;
-    private LocalDate closedAt;
+    private LocalDateTime closedAt;
 
 
 }

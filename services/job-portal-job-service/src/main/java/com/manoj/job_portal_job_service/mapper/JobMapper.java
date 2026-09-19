@@ -40,7 +40,19 @@ public class JobMapper {
                 .expiresAt(job.getExpiredAt())
                 .active(job.getActive())
 
+                .createdAt(job.getCreatedAt())
+                .updatedAt(job.getUpdatedAt())
+                .publishedAt(job.getPublishedAt())
+                .closedAt(job.getClosedAt())
+
                 .build();
 
+    }
+
+    public static JobResponse convertToResponse(Job job) {
+        CompanyResponse companyResponse = CompanyResponse.builder()
+                .id(job.getCompanyId())
+                .build();
+        return JobMapper.toResponse(job,companyResponse);
     }
 }

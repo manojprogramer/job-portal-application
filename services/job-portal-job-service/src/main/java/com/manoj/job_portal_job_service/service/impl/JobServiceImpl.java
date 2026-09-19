@@ -42,7 +42,7 @@ public class JobServiceImpl implements JobService {
                 .expiredAt(request.getExpiredAt())
                 .build();
         Job jobs = jobRepo.save(job);
-        return JobMapper.toResponse(job);
+        return JobMapper.convertToResponse(job);
     }
 
     private SalaryRange buildSalaryRange(JobRequest request) {
