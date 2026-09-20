@@ -9,21 +9,20 @@ import java.util.List;
 public interface JobService {
     JobResponse createJob(Long employerId, JobRequest request);
 
-    JobResponse getJobById(Long id);
+    JobResponse getJobById(Long id) throws Exception;
 
     List<JobResponse> getJobs(JobSearchRequest request);
 
-    JobResponse updateJob(Long employerId, JobRequest request);
 
     List<JobResponse> getJobsByCompany(Long companyId);
 
-    JobResponse updateJob(Long jobId, Long employerId, JobRequest request);
+    JobResponse updateJob(Long jobId, Long employerId, JobRequest request) throws Exception;
 
-    JobResponse publishJob(Long jobId, Long employerId);
+    JobResponse publishJob(Long jobId, Long employerId) throws Exception;
 
-    JobResponse closeJob(Long jobId, Long employerId);
+    JobResponse closeJob(Long jobId, Long employerId) throws Exception;
 
-    JobResponse deleteJob(Long jobId, Long employerId);
+    void deleteJob(Long jobId, Long employerId) throws Exception;
 
     void incrementApplicationCount(Long jobId);
 

@@ -4,10 +4,16 @@ import com.manoj.job.domain.ExperienceLevel;
 import com.manoj.job.domain.JobStatus;
 import com.manoj.job.domain.JobType;
 import com.manoj.job.domain.WorkMode;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class JobSearchRequest {
     private String keyword;
 
