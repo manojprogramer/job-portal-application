@@ -11,7 +11,6 @@ import com.manoj.job_portal_job_service.repo.JobRepo;
 import com.manoj.job_portal_job_service.repo.JobSpecification;
 import com.manoj.job_portal_job_service.service.JobService;
 import com.manoj.payload.JobSearchRequest;
-import org.hibernate.boot.jaxb.hbm.spi.JaxbHbmManyToOneType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
