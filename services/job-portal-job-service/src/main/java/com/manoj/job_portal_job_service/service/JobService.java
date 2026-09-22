@@ -1,6 +1,6 @@
 package com.manoj.job_portal_job_service.service;
 
-import com.manoj.job.dto.request.JobRequest;
+import com.manoj.job_portal_job_service.payload.JobRequest;
 import com.manoj.job.dto.response.JobResponse;
 import com.manoj.payload.JobSearchRequest;
 

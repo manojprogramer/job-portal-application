@@ -1,4 +1,4 @@
-package com.manoj.job.dto.request;
+package com.manoj.job_portal_job_service.payload;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

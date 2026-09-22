@@ -1,6 +1,6 @@
 package com.manoj.job_portal_job_service.service;
 
-import com.manoj.job.dto.request.JobCategoryRequest;
+import com.manoj.job_portal_job_service.payload.JobCategoryRequest;
 import com.manoj.job.dto.response.JobCategoryResponse;
 import com.manoj.job_portal_job_service.model.JobCategory;
 
@@ -11,6 +11,6 @@ public interface JobCategoryService {
     List<JobCategoryResponse> getAllCategories();
     JobCategoryResponse getCategoryById(Long id) throws Exception;
     JobCategoryResponse updateCategory(Long id, JobCategoryRequest request) throws Exception;
-    void deleteCategory(Long id);
+    void deleteCategory(Long id) throws Exception;
     JobCategory getCategoryEntityById(Long id) throws Exception;
 }

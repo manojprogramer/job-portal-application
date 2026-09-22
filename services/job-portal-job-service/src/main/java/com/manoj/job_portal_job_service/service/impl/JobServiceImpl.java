@@ -1,7 +1,7 @@
 package com.manoj.job_portal_job_service.service.impl;
 
 import com.manoj.job.domain.JobStatus;
-import com.manoj.job.dto.request.JobRequest;
+import com.manoj.job_portal_job_service.payload.JobRequest;
 import com.manoj.job.dto.response.JobResponse;
 import com.manoj.job_portal_job_service.mapper.JobMapper;
 import com.manoj.job_portal_job_service.model.Job;
