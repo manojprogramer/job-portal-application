@@ -1,13 +1,30 @@
 package com.manoj.job_portal_job_service.mapper;
 
-import com.manoj.job.dto.response.CompanyResponse;
-import com.manoj.job.dto.response.JobResponse;
+import com.manoj.job.dto.response.*;
 import com.manoj.job_portal_job_service.model.Job;
+import com.manoj.job_portal_job_service.model.JobCategory;
+import com.manoj.job_portal_job_service.model.JobSkill;
 import com.manoj.job_portal_job_service.model.embeddable.JobLocation;
 import com.manoj.job_portal_job_service.model.embeddable.SalaryRange;
+import com.manoj.job_portal_job_service.service.JobCategoryService;
+import com.manoj.job_portal_job_service.service.JobSkillService;
+import com.manoj.job_portal_job_service.service.JobTagService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Collections;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class JobMapper {
     public static JobResponse toResponse(Job job, CompanyResponse companyResponse){
+        JobCategoryResponse jobCategoryResponse = job.getCategory() != null
+                ? JobCategoryMapper.jobCategoryResponse(job.getCategory(),true) : null;
+        Set<JobSkillResponse> jobSkillResponses =  job.getSkills() != null
+                ? job.getSkills().stream().map(JobSkillMapper::toResponse).collect(Collectors.toSet())
+                : Collections.emptySet() ;
+        Set<JobTagResponse> jobTagResponses = job.getTags() != null
+                ? job.getTags().stream().map(JobTagMapper::toResponse).collect(Collectors.toSet())
+                : Collections.emptySet();
         JobLocation location = job.getLocation();
         SalaryRange salary = job.getSalaryRange();
         return JobResponse.builder()
@@ -18,9 +35,9 @@ public class JobMapper {
                 .responsibilities(job.getResponsibilities())
                 .benefits(job.getBenefits())
                 .companyResponse(companyResponse)
-//                .category(category)
-//                .skills(skills)
-//                .tags(tags)
+                .jobCategoryResponse(jobCategoryResponse)
+                .jobSkillResponse(jobSkillResponses)
+                .jobTagResponse(jobTagResponses)
                 .address(location != null ? location.getAddress() : null)
                 .city(location != null ? location.getCity() : null)
                 .state(location != null ? location.getState() : null)

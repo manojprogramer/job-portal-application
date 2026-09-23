@@ -7,7 +7,7 @@ import com.manoj.payload.JobSearchRequest;
 import java.util.List;
 
 public interface JobService {
-    JobResponse createJob(Long employerId, JobRequest request);
+    JobResponse createJob(Long employerId, JobRequest request) throws Exception;
 
     JobResponse getJobById(Long id) throws Exception;
 

@@ -1,41 +1,32 @@
 package com.manoj.job_portal_job_service.model;
 
-import com.manoj.job.domain.SkillCategory;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Setter
 @Getter
-@NoArgsConstructor
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class JobSkill {
+public class JobTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true,nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Column(unique = true)
     private String slug;
 
-    @Enumerated(EnumType.STRING)
-    private SkillCategory category;
-    private Boolean active = true;
-
     @CreationTimestamp
-    @Column(updatable = false,nullable = false)
+    @Column(updatable = false, nullable = false)
     private LocalDateTime createdAt;
 
-    @UpdateTimestamp
-    @Column(nullable = false)
-    private LocalDateTime updatedAt;
-
 }
-

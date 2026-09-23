@@ -15,6 +15,5 @@ public class JobSkillRequest {
     @Size(max = 100, message = "Name must not be exceed 100 characters")
     private  String name;
 
-    @NotBlank(message = "Skill Category must be required")
     private SkillCategory skillCategory;
 }

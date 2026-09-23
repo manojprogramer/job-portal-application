@@ -21,7 +21,7 @@ public class JobController {
 
     @PostMapping("/create")
     public ResponseEntity<JobResponse> createJob(@RequestHeader ("X-User-Id") Long employerId,
-                                                 @RequestBody @Valid JobRequest request){
+                                                 @RequestBody @Valid JobRequest request) throws Exception {
         return ResponseEntity.status(HttpStatus.CREATED).body(jobService.createJob(employerId,request));
     }
     @GetMapping("/{id}")
