@@ -6,8 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="job-portal-company-service" />
         <module name="job-portal-common-lib" />
+        <module name="job-portal-resume-service" />
+        <module name="job-portal-company-service" />
         <module name="job-portal-job-service" />
       </profile>
       <profile name="Annotation profile for job-portal-system" enabled="true">
@@ -26,6 +27,7 @@
       <module name="job-portal-common-lib" options="-parameters" />
       <module name="job-portal-company-service" options="-parameters" />
       <module name="job-portal-job-service" options="-parameters" />
+      <module name="job-portal-resume-service" options="-parameters" />
       <module name="job-portal-user-service" options="-parameters" />
     </option>
   </component>

@@ -74,7 +74,8 @@ public class Job {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private JobStatus jobStatus = JobStatus.DRAFT;
+    @Builder.Default
+    private JobStatus jobStatus = JobStatus.OPEN;
 
     private Integer openings = 1;
 
@@ -82,6 +83,7 @@ public class Job {
 
     private LocalDate expiredAt;
 
+    @Builder.Default
     private Boolean active = true;
 
     @CreationTimestamp

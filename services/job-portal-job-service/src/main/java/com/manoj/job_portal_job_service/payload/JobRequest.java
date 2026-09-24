@@ -21,6 +21,8 @@ public class JobRequest {
     @NotBlank(message = "Job Description is required")
     private String description;
 
+    private Long companyId;
+
     private String address;
     private String city;
     private String state;

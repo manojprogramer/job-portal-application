@@ -50,18 +50,17 @@ public class JobServiceImpl implements JobService {
         Set<JobTag> jobTags = request.getTagIds() != null
                 ? jobTagService.getTagsByIds(request.getTagIds())
                 : Collections.emptySet();
-        Long companyId = 1L;
         Job job = Job.builder()
                 .title(request.getTitle())
                 .description(request.getDescription())
                 .requirements(request.getRequirements())
                 .responsibilities(request.getResponsibilities())
                 .benefits(request.getBenefits())
-                .companyId(companyId)
+                .companyId(request.getCompanyId())
                 .employerId(employerId)
                 .category(category)
                 .skills(jobSkills)
-//                .tags(tags)
+                .tags(jobTags)
                 .location(buildLocation(request))
                 .salaryRange(buildSalaryRange(request))
                 .jobType(request.getJobType())
@@ -123,6 +122,7 @@ public class JobServiceImpl implements JobService {
                 : Collections.emptySet();
         Job job = jobRepo.findById(jobId).orElseThrow(() -> new Exception("Job Not Found"));
         assertEmployer(job,employerId);
+
 
         job.setTitle(request.getTitle());
         job.setDescription(request.getDescription());

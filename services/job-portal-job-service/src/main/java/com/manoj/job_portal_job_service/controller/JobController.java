@@ -33,7 +33,7 @@ public class JobController {
         return ResponseEntity.ok(jobService.getJobs(request));
     }
     @GetMapping("/company/{companyId}")
-    public ResponseEntity<List<JobResponse>>getJobsBycompany(@PathVariable Long companyId){
+    public ResponseEntity<List<JobResponse>>getJobsBycCompany(@PathVariable Long companyId){
         return ResponseEntity.status(HttpStatus.OK).body(jobService.getJobsByCompany(companyId));
     }
     @GetMapping("/admin")

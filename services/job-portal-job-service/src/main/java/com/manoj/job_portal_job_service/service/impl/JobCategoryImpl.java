@@ -35,6 +35,7 @@ public class JobCategoryImpl implements JobCategoryService {
                 .description(request.getDescription())
                 .iconUrl(request.getIconUrl())
                 .parent(parent)
+                .active(true)
                 .build();
         JobCategory saved  = jobCategoryRepo.save(category);
         return JobCategoryMapper.jobCategoryResponse(saved,true);

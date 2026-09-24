@@ -19,7 +19,7 @@ public class JobSpecification {
             List<Predicate> predicates = new ArrayList<>();
             predicates.add(cb.isTrue(root.get("active")));
             JobStatus status = request.getJobStatus() != null?request.getJobStatus():JobStatus.OPEN;
-            predicates.add(cb.equal(root.get("status"),status));
+            predicates.add(cb.equal(root.get("jobStatus"),status));
 
             if(request.getJobType() != null){
                 predicates.add(cb.equal(root.get("jobType"),request.getJobType()));
