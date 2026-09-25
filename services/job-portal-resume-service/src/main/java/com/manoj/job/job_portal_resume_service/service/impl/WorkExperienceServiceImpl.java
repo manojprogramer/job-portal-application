@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service0
+@Service
 public class WorkExperienceServiceImpl implements WorkExperienceService {
     @Override
     public WorkExperienceResponse addWorkExperience(Long resumeId, Long candidateId, AddWorkExperienceRequest request) {
