@@ -5,6 +5,12 @@ import com.manoj.job.domain.ResumeVisibility;
 import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -34,5 +40,20 @@ public class Resume {
     @Column(nullable = false)
     private Boolean isDefault = false;
 
+    private Integer completionScore = 0;
+
+    @Embedded
     private PersonalInfo personalInfo;
+
+    private String summary;
+
+    private Boolean isActive = true;
+
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime updatedAt;
 }

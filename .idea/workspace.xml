@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00a7bd98-f3eb-499e-9113-d81187156b32" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/controller/JobController.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/controller/JobController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/model/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/model/Job.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/payload/JobRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/payload/JobRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/repo/JobSpecification.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/repo/JobSpecification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/service/impl/JobCategoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/service/impl/JobCategoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/service/impl/JobServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-job-service/src/main/java/com/manoj/job_portal_job_service/service/impl/JobServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/services/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/model/Resume.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/model/Resume.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/model/embeddable/PersonalInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/model/embeddable/PersonalInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -32,30 +26,36 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="3Jm3RNA3rV0dRAnwoRvXmvfxHcL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.JobPortalResumeServiceApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.JobPortalResumeServiceApplication.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Vinay/OneDrive/Documents/manoj-projects/job-portal-system"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.JobPortalResumeServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.JobPortalResumeServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Vinay/OneDrive/Documents/manoj-projects/job-portal-system&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.manoj.job.job_portal_resume_service.payload" />
+      <recent name="com.manoj.job.dto" />
+      <recent name="com.manoj.job.payload" />
       <recent name="com.manoj.job.job_portal_resume_service.model" />
+      <recent name="com.manoj.job.domain" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.manoj.job.domain" />
     </key>
   </component>

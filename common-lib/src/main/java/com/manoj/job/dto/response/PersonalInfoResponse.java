@@ -1,16 +1,12 @@
-package com.manoj.job.job_portal_resume_service.model.embeddable;
+package com.manoj.job.dto.response;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
 import lombok.*;
-
-@Embeddable
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class PersonalInfo {
+public class PersonalInfoResponse {
     private String firstName;
     private String lastName;
     private String headLine;
