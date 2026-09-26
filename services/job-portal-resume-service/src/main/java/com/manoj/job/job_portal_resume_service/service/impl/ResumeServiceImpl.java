@@ -20,7 +20,7 @@ public class ResumeServiceImpl implements ResumeService {
     private ResumeRepo resumeRepo;
     @Override
     public ResumeResponse createResume(Long candidateId, CreateResumeRequest request) {
-        if(Boolean.TRUE.equals(request.getIsDefault())){
+        if(Boolean.TRUE.equals(request)){
             resumeRepo.findByCandidateIdAndIsDefaultTrue(candidateId).ifPresent(existing ->{
                 existing.setIsDefault(false);
                 resumeRepo.save(existing);
@@ -86,7 +86,6 @@ public class ResumeServiceImpl implements ResumeService {
             info.setPortfolioUrl(request.getPortfolioUrl());
         resume.setPersonalInfo(info);
         Resume saved = resumeRepo.save(resume);
-
         return buildFullResponse(saved);
     }
 

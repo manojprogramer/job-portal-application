@@ -2,15 +2,8 @@ package com.manoj.job_portal_job_service.mapper;
 
 import com.manoj.job.dto.response.*;
 import com.manoj.job_portal_job_service.model.Job;
-import com.manoj.job_portal_job_service.model.JobCategory;
-import com.manoj.job_portal_job_service.model.JobSkill;
 import com.manoj.job_portal_job_service.model.embeddable.JobLocation;
 import com.manoj.job_portal_job_service.model.embeddable.SalaryRange;
-import com.manoj.job_portal_job_service.service.JobCategoryService;
-import com.manoj.job_portal_job_service.service.JobSkillService;
-import com.manoj.job_portal_job_service.service.JobTagService;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
