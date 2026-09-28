@@ -1,6 +1,6 @@
 package com.manoj.job.job_portal_resume_service.mapper;
 
-import com.manoj.job.dto.WorkExperienceResponse;
+import com.manoj.job.dto.response.WorkExperienceResponse;
 import com.manoj.job.job_portal_resume_service.model.WorkExperience;
 
 public class WorkExperienceMapper {

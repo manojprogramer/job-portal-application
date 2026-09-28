@@ -1,11 +1,10 @@
 package com.manoj.job_portal_job_service.controller;
 
-import com.manoj.job.dto.ApiResponse;
+import com.manoj.job.dto.response.ApiResponse;
 import com.manoj.job.dto.response.JobTagResponse;
 import com.manoj.job_portal_job_service.payload.JobTagRequest;
 import com.manoj.job_portal_job_service.service.JobTagService;
 import jakarta.validation.Valid;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

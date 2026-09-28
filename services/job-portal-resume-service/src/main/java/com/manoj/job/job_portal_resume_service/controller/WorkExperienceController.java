@@ -1,15 +1,12 @@
 package com.manoj.job.job_portal_resume_service.controller;
 
-import com.manoj.job.dto.ApiResponse;
-import com.manoj.job.dto.WorkExperienceResponse;
-import com.manoj.job.job_portal_resume_service.model.WorkExperience;
+import com.manoj.job.dto.response.ApiResponse;
+import com.manoj.job.dto.response.WorkExperienceResponse;
 import com.manoj.job.job_portal_resume_service.payload.AddWorkExperienceRequest;
 import com.manoj.job.job_portal_resume_service.service.WorkExperienceService;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

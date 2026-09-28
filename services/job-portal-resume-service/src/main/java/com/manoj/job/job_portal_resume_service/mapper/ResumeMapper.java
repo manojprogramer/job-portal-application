@@ -1,8 +1,11 @@
 package com.manoj.job.job_portal_resume_service.mapper;
 
+import com.manoj.job.dto.response.JobCategoryResponse;
 import com.manoj.job.dto.response.PersonalInfoResponse;
 import com.manoj.job.dto.response.ResumeResponse;
+import com.manoj.job.dto.response.ResumeSkillResponse;
 import com.manoj.job.job_portal_resume_service.model.Resume;
+import com.manoj.job.job_portal_resume_service.model.ResumeSkill;
 import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
 
 public class ResumeMapper {
@@ -36,5 +39,15 @@ public class ResumeMapper {
                 .updatedAt(resume.getUpdatedAt())
                 .build();
 
+    }
+    public static ResumeSkillResponse toSkillResponse(ResumeSkill skill){
+        if(skill == null) return null;
+        return ResumeSkillResponse.builder()
+                .id(skill.getId())
+                .skillName(skill.getSkillName())
+                .proficiencyLevel(skill.getProficiencyLevel())
+                .yearsOfExperience(skill.getYearsOfExperience())
+                .displayOrder(skill.getDisplayOrder())
+                .build();
     }
 }

@@ -1,6 +1,6 @@
 package com.manoj.job.job_portal_resume_service.controller;
 
-import com.manoj.job.dto.ApiResponse;
+import com.manoj.job.dto.response.ApiResponse;
 import com.manoj.job.dto.response.PersonalInfoResponse;
 import com.manoj.job.dto.response.ResumeResponse;
 import com.manoj.job.job_portal_resume_service.payload.CreateResumeRequest;

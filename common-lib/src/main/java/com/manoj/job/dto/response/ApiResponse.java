@@ -1,4 +1,4 @@
-package com.manoj.job.dto;
+package com.manoj.job.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

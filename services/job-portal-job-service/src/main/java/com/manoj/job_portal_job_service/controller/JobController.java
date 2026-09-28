@@ -1,6 +1,6 @@
 package com.manoj.job_portal_job_service.controller;
 
-import com.manoj.job.dto.ApiResponse;
+import com.manoj.job.dto.response.ApiResponse;
 import com.manoj.job_portal_job_service.payload.JobRequest;
 import com.manoj.job.dto.response.JobResponse;
 import com.manoj.job_portal_job_service.service.JobService;

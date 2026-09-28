@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="job-portal-common-lib-0.0.1-SNAPSHOT2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/common-lib/target/job-portal-common-lib-0.0.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
