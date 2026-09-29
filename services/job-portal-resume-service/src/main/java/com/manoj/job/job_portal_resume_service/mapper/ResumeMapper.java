@@ -1,9 +1,8 @@
 package com.manoj.job.job_portal_resume_service.mapper;
 
-import com.manoj.job.dto.response.JobCategoryResponse;
-import com.manoj.job.dto.response.PersonalInfoResponse;
-import com.manoj.job.dto.response.ResumeResponse;
-import com.manoj.job.dto.response.ResumeSkillResponse;
+import com.manoj.job.dto.response.*;
+import com.manoj.job.job_portal_resume_service.model.Education;
+import com.manoj.job.job_portal_resume_service.model.Project;
 import com.manoj.job.job_portal_resume_service.model.Resume;
 import com.manoj.job.job_portal_resume_service.model.ResumeSkill;
 import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
@@ -50,4 +49,35 @@ public class ResumeMapper {
                 .displayOrder(skill.getDisplayOrder())
                 .build();
     }
+    public static EducationResponse toEducationResponse(Education education){
+        if (education == null) return null;
+        return EducationResponse.builder()
+                .id(education.getId())
+                .institutionName(education.getInstitutionName())
+                .degree(education.getDegree())
+                .fieldOfStudy(education.getFieldOfStudy())
+                .grade(education.getGrade())
+                .startDate(education.getStartDate())
+                .endDate(education.getEndDate())
+                .isCurrentStudying(education.getIsCurrentlyStudying())
+                .description(education.getDescription())
+                .displayOrder(education.getDisplayOrder())
+                .build();
+    }
+    public static ProjectResponse toProjectResponse(Project project){
+        if(project == null) return  null;
+        return ProjectResponse.builder()
+                .id(project.getId())
+                .title(project.getTitle())
+                .description(project.getDescription())
+                .technologies(project.getTechnologies())
+                .projectUrl(project.getProjectUrl())
+                .sourceCodeUrl(project.getSourceCodeUrl())
+                .startDate(project.getStartDate())
+                .endDate(project.getEndDate())
+                .isOngoing(project.getIsOnGoing())
+                .displayOrder(project.getDisplayOrder())
+                .build();
+    }
+
 }

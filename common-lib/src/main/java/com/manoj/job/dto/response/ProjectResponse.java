@@ -2,23 +2,23 @@ package com.manoj.job.dto.response;
 
 import lombok.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EducationResponse {
+public class ProjectResponse {
     private Long id;
-    private String institutionName;
-    private String degree;
-    private String fieldOfStudy;
-    private String grade;
+    private String title;
+    private String description;
+    private List<String> technologies;
+    private String projectUrl;
+    private String sourceCodeUrl;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private Boolean isCurrentStudying;
-    private String description;
+    private Boolean isOngoing;
     private Integer displayOrder;
 }

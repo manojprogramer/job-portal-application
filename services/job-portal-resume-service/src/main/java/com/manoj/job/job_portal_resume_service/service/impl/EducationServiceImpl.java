@@ -1,6 +1,7 @@
 package com.manoj.job.job_portal_resume_service.service.impl;
 
 import com.manoj.job.dto.response.EducationResponse;
+import com.manoj.job.job_portal_resume_service.mapper.ResumeMapper;
 import com.manoj.job.job_portal_resume_service.model.Education;
 import com.manoj.job.job_portal_resume_service.model.Resume;
 import com.manoj.job.job_portal_resume_service.payload.AddEducationRequest;
@@ -40,8 +41,8 @@ public class EducationServiceImpl implements EducationService {
                 .displayOrder(request.getDisplayOrder() != null ? request.getDisplayOrder() : 0)
                 .build();
 
-
-        return null;
+        Education saved = educationRepo.save(education);
+        return ResumeMapper.toEducationResponse(saved);
     }
 
     private void assertOwner(Resume resume, Long candidateId) throws Exception {
@@ -51,16 +52,33 @@ public class EducationServiceImpl implements EducationService {
 
     @Override
     public List<EducationResponse> getEducations(Long resumeId) {
-        return List.of();
+
+        return educationRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream().map(ResumeMapper::toEducationResponse).toList();
     }
 
     @Override
-    public EducationResponse updateEducation(Long educationId, Long resumeId, Long candidateId, AddEducationRequest request) {
-        return null;
+    public EducationResponse updateEducation(Long educationId, Long resumeId, Long candidateId, AddEducationRequest request) throws Exception {
+        Education education = educationRepo.findById(educationId).orElseThrow(() -> new Exception("Education was not found"));
+        assertOwner(education.getResume(),candidateId);
+        education.setInstitutionName(request.getInstitutionName());
+        education.setDegree(request.getDegree());
+        education.setFieldOfStudy(request.getFieldOfStudy());
+        education.setGrade(request.getGrade());
+        education.setStartDate(request.getStartDate());
+        education.setEndDate(request.getEndDate());
+        education.setIsCurrentlyStudying(Boolean.TRUE.equals(request.getIsCurrentlyStudying()));
+        education.setDescription(request.getDescription());
+        if(request.getDisplayOrder() != null) education.setDisplayOrder(request.getDisplayOrder());
+
+        return ResumeMapper.toEducationResponse(educationRepo.save(education));
     }
 
     @Override
-    public void deleteEducation(Long educationId, Long resumeId, Long candidateId) {
+    public void deleteEducation(Long educationId, Long resumeId, Long candidateId) throws Exception {
+        Education education = educationRepo.findById(educationId).orElseThrow(() -> new Exception("Education does not exist"));
+        assertOwner(education.getResume(),candidateId);
+        educationRepo.delete(education);
 
     }
 }

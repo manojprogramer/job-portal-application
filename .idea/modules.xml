@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/services/job-portal-company-service/job-portal-company-service.iml" filepath="$PROJECT_DIR$/services/job-portal-company-service/job-portal-company-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/job-portal-job-service/job-portal-job-service.iml" filepath="$PROJECT_DIR$/services/job-portal-job-service/job-portal-job-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/job-portal-resume-service/job-portal-resume-service.iml" filepath="$PROJECT_DIR$/services/job-portal-resume-service/job-portal-resume-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/job-portal-user-service/job-portal-user-service.iml" filepath="$PROJECT_DIR$/services/job-portal-user-service/job-portal-user-service.iml" />
+    </modules>
+  </component>
+</project>
