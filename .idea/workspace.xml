@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4fc1bd01-2f73-4961-b722-1d2f129c6cf0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/ProjectController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/mapper/ResumeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/mapper/ResumeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/service/EducationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/service/EducationService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,11 +55,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.manoj.job.job_portal_resume_service.repo" />
       <recent name="com.manoj.job.job_portal_resume_service.payload" />
       <recent name="com.manoj.job.dto.response" />
+      <recent name="com.manoj.job.domain" />
       <recent name="com.manoj.job.job_portal_resume_service.mapper" />
-      <recent name="com.manoj.job.job_portal_resume_service.repo" />
-      <recent name="com.manoj.job.dto" />
     </key>
   </component>
   <component name="RunAnythingCache">

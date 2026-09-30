@@ -1,10 +1,7 @@
 package com.manoj.job.job_portal_resume_service.mapper;
 
 import com.manoj.job.dto.response.*;
-import com.manoj.job.job_portal_resume_service.model.Education;
-import com.manoj.job.job_portal_resume_service.model.Project;
-import com.manoj.job.job_portal_resume_service.model.Resume;
-import com.manoj.job.job_portal_resume_service.model.ResumeSkill;
+import com.manoj.job.job_portal_resume_service.model.*;
 import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
 
 public class ResumeMapper {
@@ -77,6 +74,15 @@ public class ResumeMapper {
                 .endDate(project.getEndDate())
                 .isOngoing(project.getIsOnGoing())
                 .displayOrder(project.getDisplayOrder())
+                .build();
+    }
+    public static LanguageResponse toLanguageResponse(Language language){
+        if(language == null) return null;
+        return LanguageResponse.builder()
+                .id(language.getId())
+                .languageName(language.getLanguageName())
+                .languageProficiencyLevel(language.getProficiencyLevel())
+                .displayOrder(language.getDisplayOrder())
                 .build();
     }
 
