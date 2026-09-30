@@ -23,7 +23,7 @@ public class ProjectController {
     public ResponseEntity<ProjectResponse> addProject(@PathVariable("resume-id") Long resumeId,
                                                       @RequestHeader("X-User-Id") Long candidateId,
                                                       @RequestBody @Valid AddProjectRequest request) throws Exception {
-        return ResponseEntity.ok(projectService.addProject(resumeId, candidateId, request))
+        return ResponseEntity.ok(projectService.addProject(resumeId, candidateId, request));
     }
     @GetMapping("/get-projects")
     public ResponseEntity<List<ProjectResponse>>getProjects(@PathVariable("resume-id") Long resumeId){
@@ -41,6 +41,6 @@ public class ProjectController {
                                                      @PathVariable Long projectId,
                                                      @RequestHeader("X-User-Id") Long candidateId) throws Exception {
         projectService.deleteProject(projectId,resumeId,candidateId);
-        return ResponseEntity.ok(new ApiResponse("Project Deleted Successfully", true));8
+        return ResponseEntity.ok(new ApiResponse("Project Deleted Successfully", true));
     }
 }
