@@ -6,6 +6,7 @@ import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
 
 public class ResumeMapper {
     public static PersonalInfoResponse toPersonalInfoResponse(PersonalInfo personalInfo){
+        if(personalInfo == null) return null;
         return PersonalInfoResponse.builder()
                 .firstName(personalInfo.getFirstName())
                 .lastName(personalInfo.getLastName())

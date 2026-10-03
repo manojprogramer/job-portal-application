@@ -2,6 +2,7 @@ package com.manoj.job.job_portal_resume_service.payload;
 
 import com.manoj.job.domain.ResumeTemplate;
 import com.manoj.job.domain.ResumeVisibility;
+import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
@@ -16,4 +17,5 @@ public class CreateResumeRequest {
     private ResumeTemplate template;
     private ResumeVisibility resumeVisibility;
     private Boolean isDefault;
+
 }

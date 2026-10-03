@@ -28,15 +28,19 @@ public class Resume {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Builder.Default
     private ResumeTemplate template = ResumeTemplate.PROFESSIONAL;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Builder.Default
     private ResumeVisibility resumeVisibility = ResumeVisibility.PUBLIC;
 
+    @Builder.Default
     @Column(nullable = false)
     private Boolean isDefault = false;
 
+    @Builder.Default
     private Integer completionScore = 0;
 
     @Embedded
@@ -44,6 +48,7 @@ public class Resume {
 
     private String summary;
 
+    @Builder.Default
     private Boolean isActive = true;
 
     @CreationTimestamp

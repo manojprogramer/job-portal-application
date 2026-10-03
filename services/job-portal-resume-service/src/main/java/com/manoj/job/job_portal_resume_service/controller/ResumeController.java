@@ -3,6 +3,7 @@ package com.manoj.job.job_portal_resume_service.controller;
 import com.manoj.job.dto.response.ApiResponse;
 import com.manoj.job.dto.response.PersonalInfoResponse;
 import com.manoj.job.dto.response.ResumeResponse;
+import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
 import com.manoj.job.job_portal_resume_service.payload.CreateResumeRequest;
 import com.manoj.job.job_portal_resume_service.service.ResumeService;
 import jakarta.validation.Valid;
@@ -23,8 +24,8 @@ public class ResumeController {
                                                        @RequestBody @Valid CreateResumeRequest request){
         return ResponseEntity.ok(resumeService.createResume(candidateId,request));
     }
-    @GetMapping("/{resume-id}")
-    public ResponseEntity<ResumeResponse> getResumeById(@PathVariable Long resumeId,
+    @GetMapping("/get-resume/{resume-id}")
+    public ResponseEntity<ResumeResponse> getResumeById(@PathVariable("resume-id") Long resumeId,
                                                         @RequestHeader("X-User-Id") Long candidateId) throws Exception {
         return ResponseEntity.ok(resumeService.getResumeById(resumeId,candidateId));
     }
@@ -33,13 +34,13 @@ public class ResumeController {
         return ResponseEntity.ok(resumeService.getMyResumes(candidateId));
     }
     @PutMapping("/{resume-id}/personal-info")
-    public ResponseEntity<ResumeResponse> updatePersonalInfo(@PathVariable Long resumeId,
+    public ResponseEntity<ResumeResponse> updatePersonalInfo(@PathVariable("resume-id") Long resumeId,
                                                              @RequestHeader("X-User-Id") Long candidateId,
-                                                             @RequestBody @Valid PersonalInfoResponse personalInfoResponse) throws Exception {
-        return ResponseEntity.ok(resumeService.updatePersonalInfo(resumeId,candidateId,personalInfoResponse));
+                                                             @RequestBody @Valid PersonalInfo personalInfo) throws Exception {
+        return ResponseEntity.ok(resumeService.updatePersonalInfo(resumeId,candidateId,personalInfo));
     }
     @PatchMapping("/{resume-id}/summary")
-    public ResponseEntity<ResumeResponse> updateSummary(@PathVariable Long resumeId,
+    public ResponseEntity<ResumeResponse> updateSummary(@PathVariable("resume-id") Long resumeId,
                                                         @RequestHeader("X-User-Id") Long candidateId,
                                                         @RequestParam String summary) throws Exception {
         return ResponseEntity.ok(resumeService.updateSummary(resumeId,candidateId,summary));

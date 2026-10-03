@@ -20,7 +20,7 @@ public class ResumeServiceImpl implements ResumeService {
     private ResumeRepo resumeRepo;
     @Override
     public ResumeResponse createResume(Long candidateId, CreateResumeRequest request) {
-        if(Boolean.TRUE.equals(request)){
+        if(Boolean.TRUE.equals(request.getIsDefault())){
             resumeRepo.findByCandidateIdAndIsDefaultTrue(candidateId).ifPresent(existing ->{
                 existing.setIsDefault(false);
                 resumeRepo.save(existing);
@@ -32,6 +32,7 @@ public class ResumeServiceImpl implements ResumeService {
                 .resumeVisibility(request.getResumeVisibility())
                 .isDefault(Boolean.TRUE.equals(request.getIsDefault()))
                 .isActive(true)
+                .template(request.getTemplate())
                 .build();
         Resume saved = resumeRepo.save(resume);
         return buildFullResponse(resume);
@@ -39,7 +40,7 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Override
     public ResumeResponse getResumeById(Long resumeId, Long candidateId) throws Exception {
-        Resume resume = getResumeByEntity(candidateId);
+        Resume resume = getResumeByEntity(resumeId);
         assertOwner(resume,candidateId);
         return buildFullResponse(resume);
     }
@@ -58,7 +59,7 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public ResumeResponse updatePersonalInfo(Long resumeId, Long candidateId, PersonalInfoResponse request) throws Exception {
+    public ResumeResponse updatePersonalInfo(Long resumeId, Long candidateId, PersonalInfo request) throws Exception {
         Resume resume = getResumeByEntity(resumeId);
         assertOwner(resume,candidateId);
         PersonalInfo info = resume.getPersonalInfo();
@@ -128,6 +129,7 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Override
     public Resume getResumeByEntity(Long resumeId) throws Exception {
+        System.out.println(resumeId);
         return resumeRepo.findById(resumeId).orElseThrow(() -> new Exception("Resume not Found ById"));
     }
     private ResumeResponse buildFullResponse(Resume resume){
