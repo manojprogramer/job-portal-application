@@ -18,6 +18,7 @@ public class LanguageServiceImpl implements LanguageService {
     @Autowired
     private LanguageRepo languageRepo;
 
+    @Autowired
     private ResumeService resumeService;
 
     @Override

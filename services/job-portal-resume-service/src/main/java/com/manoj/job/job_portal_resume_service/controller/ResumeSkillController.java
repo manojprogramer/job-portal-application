@@ -20,26 +20,26 @@ public class ResumeSkillController {
     private ResumeSkillService resumeSkillService;
 
     @PostMapping("/add-skill")
-    public ResponseEntity<ResumeSkillResponse> addSkill(@PathVariable Long resumeId,
-                                                                            @RequestHeader("X-User-Id") Long candidateId,
-                                                                            @RequestBody @Valid AddResumeSkillRequest request) throws Exception {
+    public ResponseEntity<ResumeSkillResponse> addSkill(@PathVariable("resume-id") Long resumeId,
+                                                        @RequestHeader("X-User-Id") Long candidateId,
+                                                        @RequestBody @Valid AddResumeSkillRequest request) throws Exception {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(resumeSkillService.addSkill(resumeId,candidateId,request));
     }
     @GetMapping("/get-skills")
-    public ResponseEntity<List<ResumeSkillResponse>> getSkills(@PathVariable Long resumeId){
+    public ResponseEntity<List<ResumeSkillResponse>> getSkills(@PathVariable("resume-id") Long resumeId){
         return ResponseEntity.ok(resumeSkillService.getSkills(resumeId));
     }
-    @PutMapping("/{skill-id}")
-    public ResponseEntity<ResumeSkillResponse> updateSkill(@PathVariable Long resumeId,
-                                                           @PathVariable Long skillId,
+    @PutMapping("update/{skill-id}")
+    public ResponseEntity<ResumeSkillResponse> updateSkill(@PathVariable("resume-id") Long resumeId,
+                                                           @PathVariable("skill-id") Long skillId,
                                                            @RequestHeader("X-User-Id") Long candidateId,
                                                            @RequestBody @Valid AddResumeSkillRequest request) throws Exception {
         return ResponseEntity.ok(resumeSkillService.updateSkill(skillId,resumeId,candidateId,request));
     }
-    @DeleteMapping("/{skill-id}")
-    public ResponseEntity<ApiResponse> deleteSkills(@PathVariable Long resumeId,
-                                                    @PathVariable Long skillId,
+    @DeleteMapping("delete/{skill-id}")
+    public ResponseEntity<ApiResponse> deleteSkills(@PathVariable("resume-id") Long resumeId,
+                                                    @PathVariable("skill-id") Long skillId,
                                                     @RequestHeader("X-User-Id") Long candidateId) throws Exception {
         resumeSkillService.deleteSkill(skillId,resumeId,candidateId);
         return ResponseEntity.ok(new ApiResponse("Skill deleted Successfully",true));

@@ -1,12 +1,15 @@
 package com.manoj.job.job_portal_resume_service.service.impl;
 
-import com.manoj.job.dto.response.PersonalInfoResponse;
-import com.manoj.job.dto.response.ResumeResponse;
+import com.manoj.job.dto.response.*;
 import com.manoj.job.job_portal_resume_service.mapper.ResumeMapper;
+import com.manoj.job.job_portal_resume_service.mapper.WorkExperienceMapper;
+import com.manoj.job.job_portal_resume_service.model.Education;
+import com.manoj.job.job_portal_resume_service.model.Language;
 import com.manoj.job.job_portal_resume_service.model.Resume;
+import com.manoj.job.job_portal_resume_service.model.WorkExperience;
 import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
 import com.manoj.job.job_portal_resume_service.payload.CreateResumeRequest;
-import com.manoj.job.job_portal_resume_service.repo.ResumeRepo;
+import com.manoj.job.job_portal_resume_service.repo.*;
 import com.manoj.job.job_portal_resume_service.service.ResumeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +21,24 @@ import java.util.stream.Collectors;
 public class ResumeServiceImpl implements ResumeService {
     @Autowired
     private ResumeRepo resumeRepo;
+
+    @Autowired
+    private WorkExperienceRepo workExperienceRepo;
+
+    @Autowired
+    private ProjectRepo projectRepo;
+
+    @Autowired
+    private LanguageRepo languageRepo;
+
+    @Autowired
+    private ResumeSkillRepo resumeSkillRepo;
+
+    @Autowired
+    private EducationRepo educationRepo;
+
+
+
     @Override
     public ResumeResponse createResume(Long candidateId, CreateResumeRequest request) {
         if(Boolean.TRUE.equals(request.getIsDefault())){
@@ -77,14 +98,17 @@ public class ResumeServiceImpl implements ResumeService {
             info.setPhone(request.getPhone());
         if(request.getCity() != null)
             info.setCity(request.getCity());
-        if(info.getCountry() != null)
+        if(request.getCountry() != null)
             info.setCountry(request.getCountry());
-        if(info.getLinkedInUrl() != null)
+        if(request.getLinkedInUrl() != null)
             info.setLinkedInUrl(request.getLinkedInUrl());
-        if(info.getGithubUrl() != null)
+        if(request.getGithubUrl() != null)
             info.setGithubUrl(request.getGithubUrl());
-        if(info.getPortfolioUrl() != null)
+        if(request.getWebsiteUrl() != null)
+            info.setWebsiteUrl(request.getWebsiteUrl());
+        if(request.getPortfolioUrl() != null)
             info.setPortfolioUrl(request.getPortfolioUrl());
+
         resume.setPersonalInfo(info);
         Resume saved = resumeRepo.save(resume);
         return buildFullResponse(saved);
@@ -133,6 +157,17 @@ public class ResumeServiceImpl implements ResumeService {
         return resumeRepo.findById(resumeId).orElseThrow(() -> new Exception("Resume not Found ById"));
     }
     private ResumeResponse buildFullResponse(Resume resume){
-        return ResumeMapper.toResponse(resume);
+        Long resumeId = resume.getId();
+        List<WorkExperienceResponse> workExperienceResponses = workExperienceRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream().map(WorkExperienceMapper::toWorkExperienceResponse).toList();
+        List<EducationResponse> educationResponses = educationRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream().map(ResumeMapper::toEducationResponse).toList();
+        List<ResumeSkillResponse> resumeSkillResponses = resumeSkillRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream().map(ResumeMapper::toSkillResponse).toList();
+        List<ProjectResponse> projectResponses = projectRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream().map(ResumeMapper::toProjectResponse).toList();
+        List<LanguageResponse> languageResponses = languageRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream().map(ResumeMapper::toLanguageResponse).toList();
+        return ResumeMapper.toResponse(resume,workExperienceResponses,educationResponses,resumeSkillResponses,projectResponses,languageResponses);
     }
 }

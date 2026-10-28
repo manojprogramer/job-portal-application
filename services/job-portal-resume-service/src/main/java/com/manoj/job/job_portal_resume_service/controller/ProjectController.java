@@ -37,8 +37,8 @@ public class ProjectController {
         return ResponseEntity.ok(projectService.updateProject(projectId,resumeId,candidateId,request));
     }
     @DeleteMapping("/delete/{project-id}")
-    public ResponseEntity<ApiResponse> deleteProject(@PathVariable Long resumeId,
-                                                     @PathVariable Long projectId,
+    public ResponseEntity<ApiResponse> deleteProject(@PathVariable("resume-id") Long resumeId,
+                                                     @PathVariable("project-id") Long projectId,
                                                      @RequestHeader("X-User-Id") Long candidateId) throws Exception {
         projectService.deleteProject(projectId,resumeId,candidateId);
         return ResponseEntity.ok(new ApiResponse("Project Deleted Successfully", true));

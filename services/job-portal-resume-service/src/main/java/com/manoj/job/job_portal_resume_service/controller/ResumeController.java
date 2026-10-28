@@ -22,6 +22,7 @@ public class ResumeController {
     @PostMapping("/create-resume")
     public ResponseEntity<ResumeResponse> createResume(@RequestHeader("X-User-Id") Long candidateId,
                                                        @RequestBody @Valid CreateResumeRequest request){
+        System.out.println(request.getTitle());
         return ResponseEntity.ok(resumeService.createResume(candidateId,request));
     }
     @GetMapping("/get-resume/{resume-id}")
@@ -51,7 +52,7 @@ public class ResumeController {
         return ResponseEntity.ok(resumeService.setDefaultResume(resumeId,candidateId));
     }
     @DeleteMapping("/{resume-id}")
-    public ResponseEntity<ApiResponse> deleteResponse(@PathVariable Long resumeId,
+    public ResponseEntity<ApiResponse> deleteResponse(@PathVariable ("resume-id") Long resumeId,
                                                       @RequestHeader("X-User-Id") Long candidateId) throws Exception {
         resumeService.deleteResume(resumeId,candidateId);
         return ResponseEntity.ok(new ApiResponse("Resume Deleted SuccessFully", true));

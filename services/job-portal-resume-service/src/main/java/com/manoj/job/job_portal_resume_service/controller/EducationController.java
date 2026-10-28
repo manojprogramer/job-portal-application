@@ -20,23 +20,24 @@ public class EducationController {
 
     @PostMapping("/add-education")
     public ResponseEntity<EducationResponse> addEducation(@PathVariable("resume-id") Long resumeId,
-                                                          @PathVariable("X-User-Id") Long candidateId,
+                                                          @RequestHeader("X-User-Id") Long candidateId,
                                                           @RequestBody @Valid AddEducationRequest request) throws Exception {
         return ResponseEntity.ok(educationService.addEducation(resumeId,candidateId,request));
     }
     @GetMapping("/get-educations")
-    public ResponseEntity<List<EducationResponse>> getEducations(@PathVariable Long resumeId){
+    public ResponseEntity<List<EducationResponse>> getEducations(@PathVariable("resume-id") Long resumeId){
         return ResponseEntity.ok(educationService.getEducations(resumeId));
     }
     @PutMapping("/update/{education-id}")
-    public ResponseEntity<EducationResponse> updateEducation(@PathVariable Long resumeId,
-                                                             @PathVariable Long educationId,
-                                                             @PathVariable("X-User-Id") Long candidateId,
+    public ResponseEntity<EducationResponse> updateEducation(@PathVariable("resume-id") Long resumeId,
+                                                             @PathVariable("education-id") Long educationId,
+                                                             @RequestHeader("X-User-Id") Long candidateId,
                                                              @RequestBody @Valid AddEducationRequest request) throws Exception {
         return ResponseEntity.ok(educationService.updateEducation(educationId,resumeId,candidateId,request));
     }
-    public ResponseEntity<ApiResponse> deleteEducation(@PathVariable Long resumeId,
-                                                       @PathVariable Long educationId,
+    @DeleteMapping("/delete/{education-id}")
+    public ResponseEntity<ApiResponse> deleteEducation(@PathVariable("resume-id") Long resumeId,
+                                                       @PathVariable("education-id") Long educationId,
                                                        @RequestHeader("X-User-Id") Long candidateId) throws Exception {
         educationService.deleteEducation(educationId,resumeId,candidateId);
         return ResponseEntity.ok(new ApiResponse("Education is Deleted Successful",true));

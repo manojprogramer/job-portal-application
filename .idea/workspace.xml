@@ -6,13 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="4fc1bd01-2f73-4961-b722-1d2f129c6cf0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common-lib/src/main/java/com/manoj/job/dto/response/ResumeResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/common-lib/src/main/java/com/manoj/job/dto/response/ResumeResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/EducationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/EducationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/LanguageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/LanguageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/ProjectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/ResumeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/ResumeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/ResumeSkillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/ResumeSkillController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/WorkExperienceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/controller/WorkExperienceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/mapper/ResumeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/mapper/ResumeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/model/Resume.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/model/Resume.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/payload/CreateResumeRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/payload/CreateResumeRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/service/ResumeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/service/ResumeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/payload/AddWorkExperienceRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/payload/AddWorkExperienceRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/service/impl/LanguageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/service/impl/LanguageServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/service/impl/ResumeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/java/com/manoj/job/job_portal_resume_service/service/impl/ResumeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/services/job-portal-resume-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +44,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.JobPortalResumeServiceApplication.executor": "Run",
-    "Maven.job-portal-system [clean].executor": "Run",
-    "Maven.job-portal-system [install].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/User/OneDrive/Documents/manoj projects/DSA-Striver-sheet",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.JobPortalResumeServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.job-portal-system [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.job-portal-system [install].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/OneDrive/Documents/manoj projects/job-portal-application&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.manoj.job.job_portal_resume_service.repo" />

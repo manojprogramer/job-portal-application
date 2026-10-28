@@ -5,6 +5,7 @@ import com.manoj.job.domain.ResumeVisibility;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,11 +25,11 @@ public class ResumeResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-//    private List<WorkExperienceResponse> workExperienceResponse;
-//    private List<EducationResponse> educationResponse;
-//    private List<ResumeSkillResponse> resumeSkillResponse;
-//    private List<ProjectResponse> projectResponse;
+    private List<WorkExperienceResponse> workExperienceResponse;
+    private List<EducationResponse> educationResponse;
+    private List<ResumeSkillResponse> resumeSkillResponse;
+    private List<ProjectResponse> projectResponse;
 //    private List<CertificationResponse> certificationResponse;
 //    private List<AwardResponse> awardResponse;
-//    private List<LanguageResponse> languageResponse;
+    private List<LanguageResponse> languageResponse;
 }

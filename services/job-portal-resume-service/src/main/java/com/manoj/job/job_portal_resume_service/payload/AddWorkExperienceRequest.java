@@ -2,6 +2,7 @@ package com.manoj.job.job_portal_resume_service.payload;
 
 import com.manoj.job.domain.JobType;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -24,7 +25,7 @@ public class AddWorkExperienceRequest {
     private JobType employmentType;
     private String location;
 
-    @NotBlank(message = "Start Date is Required")
+    @NotNull(message = "Start Date is Required")
     private LocalDate startDate;
     private LocalDate endDate;
 

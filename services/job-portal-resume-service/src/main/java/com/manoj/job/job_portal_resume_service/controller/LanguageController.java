@@ -18,26 +18,26 @@ public class LanguageController {
     @Autowired
     private LanguageService languageService;
     @PostMapping("/add-language")
-    public ResponseEntity<LanguageResponse> addLanguage(@PathVariable Long resumeId,
+    public ResponseEntity<LanguageResponse> addLanguage(@PathVariable("resume-id") Long resumeId,
                                                         @RequestHeader("X-User-Id") Long candidateId,
                                                         @RequestBody @Valid AddLanguageRequest request) throws Exception {
         return ResponseEntity.ok(languageService.addLanguage(resumeId,candidateId,request));
     }
     @GetMapping("/get-languages")
-    public ResponseEntity<List<LanguageResponse>> getLanguages(@PathVariable Long resumeId){
+    public ResponseEntity<List<LanguageResponse>> getLanguages(@PathVariable("resume-id") Long resumeId){
         return ResponseEntity.ok(languageService.getLanguages(resumeId));
     }
-    @PutMapping("/{language-id}")
+    @PutMapping("/update/{language-id}")
     public ResponseEntity<LanguageResponse> updateLanguage(
-            @PathVariable Long resumeId,
-            @PathVariable Long languageId,
+            @PathVariable("resume-id") Long resumeId,
+            @PathVariable("language-id") Long languageId,
             @RequestHeader("X-User-Id") Long candidateId,
             @RequestBody @Valid AddLanguageRequest request) throws Exception {
         return ResponseEntity.ok(languageService.updateLanguage(languageId,resumeId,candidateId,request));
     }
     @DeleteMapping("/delete/{language-id}")
-    public ResponseEntity<ApiResponse> deleteLanguage(@PathVariable Long resumeId,
-                                                      @PathVariable Long languageId,
+    public ResponseEntity<ApiResponse> deleteLanguage(@PathVariable("resume-id") Long resumeId,
+                                                      @PathVariable("language-id") Long languageId,
                                                       @RequestHeader("X-User-Id") Long candidateId) throws Exception {
 
         languageService.deleteLanguage(languageId,resumeId,candidateId);

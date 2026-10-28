@@ -4,6 +4,8 @@ import com.manoj.job.dto.response.*;
 import com.manoj.job.job_portal_resume_service.model.*;
 import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
 
+import java.util.List;
+
 public class ResumeMapper {
     public static PersonalInfoResponse toPersonalInfoResponse(PersonalInfo personalInfo){
         if(personalInfo == null) return null;
@@ -21,16 +23,27 @@ public class ResumeMapper {
                 .websiteUrl(personalInfo.getWebsiteUrl())
                 .build();
     }
-    public static ResumeResponse toResponse(Resume resume){
+    public static ResumeResponse toResponse(Resume resume,
+                                            List<WorkExperienceResponse> workExperienceResponses,
+                                            List<EducationResponse> educationResponses,
+                                            List<ResumeSkillResponse> resumeSkillResponses,
+                                            List<ProjectResponse> projectResponses,
+                                            List<LanguageResponse> languageResponses){
         if(resume == null) return null;
         return ResumeResponse.builder()
                 .id(resume.getId())
+                .title(resume.getTitle())
                 .candidateId(resume.getCandidateId())
                 .resumeTemplate(resume.getTemplate())
                 .resumeVisibility(resume.getResumeVisibility())
                 .isDefault(resume.getIsDefault())
                 .personalInfo(ResumeMapper.toPersonalInfoResponse(resume.getPersonalInfo()))
                 .summary(resume.getSummary())
+                .projectResponse(projectResponses)
+                .workExperienceResponse(workExperienceResponses)
+                .educationResponse(educationResponses)
+                .resumeSkillResponse(resumeSkillResponses)
+                .languageResponse(languageResponses)
                 .completionScore(resume.getCompletionScore())
                 .createdAt(resume.getCreatedAt())
                 .updatedAt(resume.getUpdatedAt())
