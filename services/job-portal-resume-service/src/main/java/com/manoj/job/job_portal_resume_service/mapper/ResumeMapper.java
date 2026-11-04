@@ -28,7 +28,9 @@ public class ResumeMapper {
                                             List<EducationResponse> educationResponses,
                                             List<ResumeSkillResponse> resumeSkillResponses,
                                             List<ProjectResponse> projectResponses,
-                                            List<LanguageResponse> languageResponses){
+                                            List<LanguageResponse> languageResponses,
+                                            List<CertificationResponse> certificationResponses,
+                                            List<AwardResponse> awardResponses){
         if(resume == null) return null;
         return ResumeResponse.builder()
                 .id(resume.getId())
@@ -44,6 +46,8 @@ public class ResumeMapper {
                 .educationResponse(educationResponses)
                 .resumeSkillResponse(resumeSkillResponses)
                 .languageResponse(languageResponses)
+                .certificationResponse(certificationResponses)
+                .awardResponse(awardResponses)
                 .completionScore(resume.getCompletionScore())
                 .createdAt(resume.getCreatedAt())
                 .updatedAt(resume.getUpdatedAt())
@@ -99,5 +103,47 @@ public class ResumeMapper {
                 .displayOrder(language.getDisplayOrder())
                 .build();
     }
+    public static WorkExperienceResponse toWorkExperienceResponse(WorkExperience workExperience){
+        if(workExperience == null) return null;
+        return WorkExperienceResponse.builder()
+                .id(workExperience.getId())
+                .companyName(workExperience.getCompanyName())
+                .companyLogoUrl(workExperience.getCompanyLogoUrl())
+                .jobTitle(workExperience.getJobTitle())
+                .employmentType(workExperience.getEmploymentType())
+                .location(workExperience.getLocation())
+                .startDate(workExperience.getStartDate())
+                .endDate(workExperience.getEndDate())
+                .isCurrentJob(workExperience.getIsCurrentJob())
+                .description(workExperience.getDescription())
+                .technologies(workExperience.getTechnologiesName())
+                .displayOrder(workExperience.getDisplayOrder())
+                .build();
+    }
+    public static CertificationResponse toCertificationResponse(Certification certification) {
+        if(certification == null) return null;
+        return CertificationResponse.builder()
+                .id(certification.getId())
+                .certificationName(certification.getCertificationName())
+                .credentialUrl(certification.getCredentialUrl())
+                .credentialId(certification.getCredentialId())
+                .description(certification.getDescription())
+                .issuingOrganization(certification.getIssuingOrganization())
+                .issueDate(certification.getIssueDate())
+                .expiryDate(certification.getExpiryDate())
+                .doesNotExpire(certification.getDoesNotExpire())
+                .build();
+    }
 
+    public static AwardResponse toAwardResponse(Award award) {
+        if(award == null) return null;
+        return AwardResponse.builder()
+                .id(award.getId())
+                .awardDate(award.getAwardDate())
+                .awardTitle(award.getAwardTitle())
+                .awardUrl(award.getAwardUrl())
+                .description(award.getDescription())
+                .issuingOrganization(award.getIssuingOrganization())
+                .build();
+    }
 }

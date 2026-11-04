@@ -1,5 +1,7 @@
 package com.manoj.job.dto.response;
 
+
+
 import com.manoj.job.domain.ResumeTemplate;
 import com.manoj.job.domain.ResumeVisibility;
 import lombok.*;
@@ -29,7 +31,7 @@ public class ResumeResponse {
     private List<EducationResponse> educationResponse;
     private List<ResumeSkillResponse> resumeSkillResponse;
     private List<ProjectResponse> projectResponse;
-//    private List<CertificationResponse> certificationResponse;
-//    private List<AwardResponse> awardResponse;
+    private List<CertificationResponse> certificationResponse;
+    private List<AwardResponse> awardResponse;
     private List<LanguageResponse> languageResponse;
 }

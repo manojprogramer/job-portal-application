@@ -1,7 +1,7 @@
 package com.manoj.job.job_portal_resume_service.service.impl;
 
 import com.manoj.job.dto.response.WorkExperienceResponse;
-import com.manoj.job.job_portal_resume_service.mapper.WorkExperienceMapper;
+import com.manoj.job.job_portal_resume_service.mapper.ResumeMapper;
 import com.manoj.job.job_portal_resume_service.model.Resume;
 import com.manoj.job.job_portal_resume_service.model.WorkExperience;
 import com.manoj.job.job_portal_resume_service.payload.AddWorkExperienceRequest;
@@ -42,7 +42,7 @@ public class WorkExperienceServiceImpl implements WorkExperienceService {
                 .displayOrder(request.getDisplayOrder() != null ? request.getDisplayOrder() : 0)
                 .build();
         WorkExperience saved = workExperienceRepo.save(workExperience);
-        return WorkExperienceMapper.toWorkExperienceResponse(saved);
+        return ResumeMapper.toWorkExperienceResponse(saved);
     }
 
     private void assertOwner(Resume resume, Long candidateId) throws Exception {
@@ -53,7 +53,7 @@ public class WorkExperienceServiceImpl implements WorkExperienceService {
     @Override
     public List<WorkExperienceResponse> getWorkExperiences(Long resumeId) {
         return workExperienceRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId).stream()
-                .map(WorkExperienceMapper::toWorkExperienceResponse).toList();
+                .map(ResumeMapper::toWorkExperienceResponse).toList();
     }
 
     @Override
@@ -74,7 +74,7 @@ public class WorkExperienceServiceImpl implements WorkExperienceService {
         if(request.getDisplayOrder() != null) workExperience.setDisplayOrder(request.getDisplayOrder());
 
        WorkExperience updated =  workExperienceRepo.save(workExperience);
-        return WorkExperienceMapper.toWorkExperienceResponse(updated);
+        return ResumeMapper.toWorkExperienceResponse(updated);
     }
 
     @Override

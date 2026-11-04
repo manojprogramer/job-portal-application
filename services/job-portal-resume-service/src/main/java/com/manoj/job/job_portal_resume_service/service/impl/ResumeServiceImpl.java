@@ -2,11 +2,7 @@ package com.manoj.job.job_portal_resume_service.service.impl;
 
 import com.manoj.job.dto.response.*;
 import com.manoj.job.job_portal_resume_service.mapper.ResumeMapper;
-import com.manoj.job.job_portal_resume_service.mapper.WorkExperienceMapper;
-import com.manoj.job.job_portal_resume_service.model.Education;
-import com.manoj.job.job_portal_resume_service.model.Language;
 import com.manoj.job.job_portal_resume_service.model.Resume;
-import com.manoj.job.job_portal_resume_service.model.WorkExperience;
 import com.manoj.job.job_portal_resume_service.model.embeddable.PersonalInfo;
 import com.manoj.job.job_portal_resume_service.payload.CreateResumeRequest;
 import com.manoj.job.job_portal_resume_service.repo.*;
@@ -37,6 +33,11 @@ public class ResumeServiceImpl implements ResumeService {
     @Autowired
     private EducationRepo educationRepo;
 
+    @Autowired
+    private CertificationRepo certificationRepo;
+
+    @Autowired
+    private AwardRepo awardRepo;
 
 
     @Override
@@ -159,7 +160,7 @@ public class ResumeServiceImpl implements ResumeService {
     private ResumeResponse buildFullResponse(Resume resume){
         Long resumeId = resume.getId();
         List<WorkExperienceResponse> workExperienceResponses = workExperienceRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
-                .stream().map(WorkExperienceMapper::toWorkExperienceResponse).toList();
+                .stream().map(ResumeMapper::toWorkExperienceResponse).toList();
         List<EducationResponse> educationResponses = educationRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
                 .stream().map(ResumeMapper::toEducationResponse).toList();
         List<ResumeSkillResponse> resumeSkillResponses = resumeSkillRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
@@ -168,6 +169,18 @@ public class ResumeServiceImpl implements ResumeService {
                 .stream().map(ResumeMapper::toProjectResponse).toList();
         List<LanguageResponse> languageResponses = languageRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
                 .stream().map(ResumeMapper::toLanguageResponse).toList();
-        return ResumeMapper.toResponse(resume,workExperienceResponses,educationResponses,resumeSkillResponses,projectResponses,languageResponses);
+        List<CertificationResponse> certificationResponses = certificationRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream().map(ResumeMapper::toCertificationResponse).toList();
+        List<AwardResponse> awardResponses = awardRepo.findByResumeIdOrderByDisplayOrderAsc(resumeId)
+                .stream().map(ResumeMapper::toAwardResponse).toList();
+        return ResumeMapper.toResponse(resume,
+                workExperienceResponses,
+                educationResponses,
+                resumeSkillResponses,
+                projectResponses,
+                languageResponses,
+                certificationResponses,
+                awardResponses
+        );
     }
 }
