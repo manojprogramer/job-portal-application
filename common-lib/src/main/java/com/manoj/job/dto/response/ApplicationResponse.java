@@ -23,6 +23,8 @@ public class ApplicationResponse {
 
     private JobResponse jobResponse;
 
+    private CompanyResponse companyResponse;
+
     private ApplicationStatus status;
 
     private Long resumeId;
@@ -42,6 +44,7 @@ public class ApplicationResponse {
     private LocalDateTime appliedAt;
 
     private LocalDateTime updatedAt;
+
 
 //    private List<ApplicationNoteResponse>notes;
 

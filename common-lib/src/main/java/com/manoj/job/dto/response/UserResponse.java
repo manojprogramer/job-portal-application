@@ -3,12 +3,17 @@ package com.manoj.job.dto.response;
 
 import com.manoj.job.domain.UserRole;
 import com.manoj.job.domain.UserStatus;
-import lombok.Data;
+import lombok.*;
 
 
 import java.time.LocalDateTime;
 
 @Data
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserResponse {
     private Long id;
     private String fullName;
