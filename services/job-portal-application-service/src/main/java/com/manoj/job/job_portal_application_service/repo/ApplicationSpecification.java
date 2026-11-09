@@ -15,7 +15,7 @@ public class ApplicationSpecification {
             Long companyId,
             Long jobId,
             ApplicationStatus status,
-            boolean isStarred,
+            Boolean isStarred,
             AiShortListStatus aiShortListStatus,
             Integer minAiScore
     ){
@@ -24,7 +24,7 @@ public class ApplicationSpecification {
             predicateList.add(cb.equal(root.get("companyId"), companyId));
             if (jobId != null) predicateList.add(cb.equal(root.get("jobId"), jobId));
             if (status != null) predicateList.add(cb.equal(root.get("status"), status));
-            if (isStarred) predicateList.add(cb.equal(root.get("isStarred"), isStarred));
+            if (isStarred != null) predicateList.add(cb.equal(root.get("isStarred"), isStarred));
             if (aiShortListStatus != null)
                 predicateList.add(cb.equal(root.get("aiShortListStatus"), aiShortListStatus));
             if (minAiScore != null) predicateList.add(cb.equal(root.get("aiScore"), minAiScore));

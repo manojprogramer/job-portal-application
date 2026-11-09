@@ -25,7 +25,7 @@ public class ApplicationMapper {
                 .build();
     }
     public static ApplicationResponse toResponse(Application application,
-//                                                 List<ApplicationNote> notes,
+                                                 List<ApplicationNote> notes,
                                                  JobResponse jobResponse,
                                                  CompanyResponse companyResponse,
                                                  UserResponse userResponse
@@ -43,7 +43,7 @@ public class ApplicationMapper {
                 .expectedSalary(application.getExpectedSalary())
                 .availableFrom(application.getAvailableFrom())
                 .isStarred(application.getIsStarred())
-//                .notes(notes)
+                .notes(notes.stream().map(ApplicationMapper::toNoteResponse).toList())
                 .withdrawnAt(application.getWithdrawnAt())
                 .withdrawnReason(application.getWithdrawnReason())
                 .appliedAt(application.getAppliedAt())

@@ -2,7 +2,7 @@ package com.manoj.job_portal_job_service.service;
 
 import com.manoj.job_portal_job_service.payload.JobRequest;
 import com.manoj.job.dto.response.JobResponse;
-import com.manoj.payload.JobSearchRequest;
+import com.manoj.job_portal_job_service.payload.JobSearchRequest;
 
 import java.util.List;
 

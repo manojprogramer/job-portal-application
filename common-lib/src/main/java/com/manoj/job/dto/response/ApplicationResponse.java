@@ -7,6 +7,7 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -46,7 +47,7 @@ public class ApplicationResponse {
     private LocalDateTime updatedAt;
 
 
-//    private List<ApplicationNoteResponse>notes;
+    private List<ApplicationNoteResponse> notes;
 
 //    private ApplicationScreeningResponse screeningResponse;
 }

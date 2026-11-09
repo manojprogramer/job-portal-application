@@ -7,9 +7,11 @@ import com.manoj.job.dto.response.JobResponse;
 import com.manoj.job.dto.response.UserResponse;
 import com.manoj.job.job_portal_application_service.mapper.ApplicationMapper;
 import com.manoj.job.job_portal_application_service.model.Application;
+import com.manoj.job.job_portal_application_service.model.ApplicationNote;
 import com.manoj.job.job_portal_application_service.payload.CompanyApplicationFilterRequest;
 import com.manoj.job.job_portal_application_service.payload.CreateApplicationRequest;
 import com.manoj.job.job_portal_application_service.payload.WithDrawnApplicationRequest;
+import com.manoj.job.job_portal_application_service.repo.ApplicationNoteRepo;
 import com.manoj.job.job_portal_application_service.repo.ApplicationRepo;
 import com.manoj.job.job_portal_application_service.repo.ApplicationSpecification;
 import com.manoj.job.job_portal_application_service.service.ApplicationService;
@@ -24,6 +26,9 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Autowired
     private ApplicationRepo applicationRepo;
+
+    @Autowired
+    private ApplicationNoteRepo applicationNoteRepo;
 
     @Override
     public ApplicationResponse createApplication(Long candidateId, CreateApplicationRequest request) throws Exception {
@@ -105,7 +110,7 @@ public class ApplicationServiceImpl implements ApplicationService {
         Application application = getApplicationEntity(applicationId);
         assertEmployer(application,employerId);
 
-        application.setIsStarred(!application.getIsStarred());
+        application.setIsStarred(application.getIsStarred());
         Application savedApplication = applicationRepo.save(application);
         return buildFullResponse(savedApplication);
     }
@@ -127,8 +132,9 @@ public class ApplicationServiceImpl implements ApplicationService {
         JobResponse jobResponse = JobResponse.builder().id(application.getId()).build();
         CompanyResponse companyResponse = CompanyResponse.builder().id(application.getCompanyId()).build();
         UserResponse userResponse = UserResponse.builder().id(application.getCandidateId()).build();
-
+        List<ApplicationNote> notes = applicationNoteRepo.findByApplicationId(application.getId());
         return ApplicationMapper.toResponse(application,
+                notes,
                 jobResponse,
                 companyResponse,
                 userResponse);

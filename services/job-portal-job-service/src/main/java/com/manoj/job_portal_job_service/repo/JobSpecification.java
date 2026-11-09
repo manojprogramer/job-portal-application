@@ -2,7 +2,7 @@ package com.manoj.job_portal_job_service.repo;
 
 import com.manoj.job.domain.JobStatus;
 import com.manoj.job_portal_job_service.model.Job;
-import com.manoj.payload.JobSearchRequest;
+import com.manoj.job_portal_job_service.payload.JobSearchRequest;
 import jakarta.persistence.criteria.Path;
 import jakarta.persistence.criteria.Predicate;
 import org.springframework.data.jpa.domain.Specification;

@@ -1,8 +1,8 @@
 package com.manoj.job.job_portal_application_service.controller;
 
+
 import com.manoj.job.dto.response.ApiResponse;
 import com.manoj.job.dto.response.ApplicationResponse;
-import com.manoj.job.job_portal_application_service.model.Application;
 import com.manoj.job.job_portal_application_service.payload.CompanyApplicationFilterRequest;
 import com.manoj.job.job_portal_application_service.payload.CreateApplicationRequest;
 import com.manoj.job.job_portal_application_service.payload.UpdateApplicationStatusRequest;
@@ -40,7 +40,7 @@ public class ApplicationController {
         return ResponseEntity.ok(applicationService.getMyApplications(candidateId));
     }
     @GetMapping("/job/{job-id}")
-    public ResponseEntity<List<ApplicationResponse>> getApplicationsForJob(@PathVariable Long jobId){
+    public ResponseEntity<List<ApplicationResponse>> getApplicationsForJob(@PathVariable("job-id") Long jobId){
         return ResponseEntity.ok(applicationService.getApplicationsForJob(jobId));
     }
     @GetMapping("/company")

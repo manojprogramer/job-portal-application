@@ -16,9 +16,8 @@ import com.manoj.job_portal_job_service.service.JobCategoryService;
 import com.manoj.job_portal_job_service.service.JobService;
 import com.manoj.job_portal_job_service.service.JobSkillService;
 import com.manoj.job_portal_job_service.service.JobTagService;
-import com.manoj.payload.JobSearchRequest;
+import com.manoj.job_portal_job_service.payload.JobSearchRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

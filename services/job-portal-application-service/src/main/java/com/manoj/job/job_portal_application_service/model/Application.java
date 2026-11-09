@@ -39,8 +39,10 @@ public class Application {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Builder.Default
     private ApplicationStatus status = ApplicationStatus.PENDING;
 
+    @Column(columnDefinition = "Text")
     private String coverLetter;
 
     private BigDecimal expectedSalary;
@@ -54,6 +56,7 @@ public class Application {
     @Column
     private Integer aiScore;
 
+    @Column(columnDefinition = "Text")
     private LocalDateTime withdrawnAt;
 
     private String withdrawnReason;

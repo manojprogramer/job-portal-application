@@ -17,6 +17,10 @@
 	</description>
 	<dependencies>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.manoj.job</groupId>
 			<artifactId>job-portal-common-lib</artifactId>
 		</dependency>
