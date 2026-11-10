@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/auth/api/users")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -33,7 +33,7 @@ public class UserController {
     public ResponseEntity<UserResponse> getByUserId(@PathVariable Long userId) throws Exception {
         return ResponseEntity.ok(UserMapper.toDTO(userService.getUserById(userId)));
     }
-    @GetMapping("/users")
+    @GetMapping
     public ResponseEntity<List<UserResponse>> getUsers(){
         return ResponseEntity.ok(UserMapper.toDTOList(userService.getAllUsers()));
     }
@@ -45,7 +45,7 @@ public class UserController {
     public ResponseEntity<UserResponse> activateUser(@PathVariable Long userId) throws Exception {
         return ResponseEntity.ok(userService.activateUser(userId));
     }
-    @PatchMapping("users/{userId}/delete")
+    @DeleteMapping("users/{userId}/delete")
     public ResponseEntity<UserResponse> deleteUser(@PathVariable Long userId) throws Exception {
         return ResponseEntity.ok(userService.deleteUser(userId));
     }

@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
         User user = getUserById(id);
         user.setStatus(UserStatus.DELETED);
         user.setDeletedAt(LocalDateTime.now());
-        userRepo.save(user);
+        userRepo.delete(user);
         return UserMapper.toDTO(user);
     }
 }
