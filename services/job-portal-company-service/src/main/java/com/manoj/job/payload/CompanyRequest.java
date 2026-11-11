@@ -1,4 +1,4 @@
-package com.manoj.job.dto.request;
+package com.manoj.job.payload;
 
 import com.manoj.job.domain.CompanySize;
 import com.manoj.job.domain.CompanyStatus;

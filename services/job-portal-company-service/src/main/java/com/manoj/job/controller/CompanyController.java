@@ -4,7 +4,7 @@ import com.manoj.job.domain.CompanyStatus;
 import com.manoj.job.domain.CompanyType;
 import com.manoj.job.domain.IndustryType;
 import com.manoj.job.dto.response.ApiResponse;
-import com.manoj.job.dto.request.CompanyRequest;
+import com.manoj.job.payload.CompanyRequest;
 import com.manoj.job.dto.response.CompanyResponse;
 import com.manoj.job.service.CompanyService;
 import jakarta.validation.Valid;
@@ -40,7 +40,7 @@ public class CompanyController {
                                                                  @RequestParam(required = false)CompanyStatus companyStatus){
         return ResponseEntity.status(HttpStatus.OK).body(companyService.getAllCompanies(companyType,industryType,companyStatus));
     }
-    @PutMapping("update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<CompanyResponse> updateCompany(@PathVariable("id") Long companyId,@RequestHeader("X-User-Id") Long ownerId, @RequestBody @Valid CompanyRequest companyRequest) throws Exception {
         System.out.println("Entering into the controller");
         return ResponseEntity.status(HttpStatus.OK).body(companyService.updateCompany(companyId,ownerId,companyRequest));

@@ -3,7 +3,7 @@ package com.manoj.job.service;
 import com.manoj.job.domain.CompanyStatus;
 import com.manoj.job.domain.CompanyType;
 import com.manoj.job.domain.IndustryType;
-import com.manoj.job.dto.request.CompanyRequest;
+import com.manoj.job.payload.CompanyRequest;
 import com.manoj.job.dto.response.CompanyResponse;
 import com.manoj.job.dto.response.SocialLinkResponse;
 import com.manoj.job.mapper.CompanyMapper;
@@ -11,7 +11,6 @@ import com.manoj.job.model.Company;
 import com.manoj.job.model.SocialLink;
 import com.manoj.job.repo.CompanyRepo;
 import jakarta.validation.constraints.NotBlank;
-import org.apache.catalina.mapper.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
