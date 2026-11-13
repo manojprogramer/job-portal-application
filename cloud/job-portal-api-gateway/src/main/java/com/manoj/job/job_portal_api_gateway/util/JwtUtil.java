@@ -3,9 +3,11 @@ package com.manoj.job.job_portal_api_gateway.util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 
+@Component
 public class JwtUtil {
     private final SecretKey secretKey = Keys.hmacShaKeyFor(JwtConstant.SECRET_KEY.getBytes());
 
@@ -22,9 +24,11 @@ public class JwtUtil {
     public String extractAuthorities(String token){
         return extractAllClaims(token).get("authorities",String.class);
     }
-    public String extractUserId(String token){
-        return extractAllClaims(token).get("userId",String.class);
+
+    public Long extractUserId(String token) {
+        return extractAllClaims(token).get("userId",Long.class);
     }
+
     public Boolean isTokenValid(String token){
         try {
             extractAllClaims(token);

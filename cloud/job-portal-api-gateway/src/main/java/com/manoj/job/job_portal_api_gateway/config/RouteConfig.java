@@ -104,17 +104,17 @@ public class RouteConfig {
     private ServerRequest jwtAuthFilter(ServerRequest request){
         String authHeader = request.headers().firstHeader(JwtConstant.JWT_HEADER);
         if(authHeader == null || !authHeader.startsWith(JwtConstant.TOKEN_PREFIX))
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"missing or Invalid authorization header");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"missing authorization header");
         String token = authHeader.substring(JwtConstant.TOKEN_PREFIX.length());
 
         if(!jwtUtil.isTokenValid(token))
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"missing or Invalid authorization header");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED,"Invalid authorization header");
         String email = jwtUtil.extractEmail(token);
         String authorities = jwtUtil.extractAuthorities(token);
-        String userId = jwtUtil.extractUserId(token);
+        Long userId = jwtUtil.extractUserId(token);
 
         return ServerRequest.from(request)
-                .header("X-User-Id",String.valueOf(userId))
+                .header("X-User-Id", String.valueOf(userId))
                 .header("X-User-Email",email)
                 .header("X-User-Role",authorities)
                 .build();

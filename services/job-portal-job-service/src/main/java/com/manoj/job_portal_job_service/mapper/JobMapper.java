@@ -1,14 +1,20 @@
 package com.manoj.job_portal_job_service.mapper;
 
 import com.manoj.job.dto.response.*;
+import com.manoj.job_portal_job_service.client.CompanyClient;
 import com.manoj.job_portal_job_service.model.Job;
 import com.manoj.job_portal_job_service.model.embeddable.JobLocation;
 import com.manoj.job_portal_job_service.model.embeddable.SalaryRange;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class JobMapper {
+
+    @Autowired
+    private CompanyClient client;
     public static JobResponse toResponse(Job job, CompanyResponse companyResponse){
         JobCategoryResponse jobCategoryResponse = job.getCategory() != null
                 ? JobCategoryMapper.jobCategoryResponse(job.getCategory(),true) : null;
@@ -59,10 +65,5 @@ public class JobMapper {
 
     }
 
-    public static JobResponse convertToResponse(Job job) {
-        CompanyResponse companyResponse = CompanyResponse.builder()
-                .id(job.getCompanyId())
-                .build();
-        return JobMapper.toResponse(job,companyResponse);
-    }
+
 }

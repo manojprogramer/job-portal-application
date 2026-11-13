@@ -12,6 +12,7 @@ com\manoj\job\domain\SocialPlatform.class
 com\manoj\job\dto\response\LanguageResponse$LanguageResponseBuilder.class
 com\manoj\job\dto\response\ResumeResponse.class
 com\manoj\job\dto\response\EducationResponse$EducationResponseBuilder.class
+com\manoj\job\dto\response\SavedJobResponse.class
 com\manoj\job\dto\response\UserResponse$UserResponseBuilder.class
 com\manoj\job\dto\response\JobCategoryResponse$ResumeSkillResponse$ResumeSkillResponseBuilder.class
 com\manoj\job\dto\response\WorkExperienceResponse.class
@@ -25,7 +26,6 @@ com\manoj\job\domain\CompanyType.class
 com\manoj\job\domain\IndustryType.class
 com\manoj\job\dto\response\SocialLinkResponse$SocialLinkResponseBuilder.class
 com\manoj\job\dto\response\JobSkillResponse$JobSkillResponseBuilder.class
-com\manoj\job\dto\request\CompanyRequest$CompanyRequestBuilder.class
 com\manoj\job\domain\ApplicationStatus.class
 com\manoj\job\domain\AiShortListStatus.class
 com\manoj\job\dto\response\ApiResponse.class
@@ -34,6 +34,7 @@ com\manoj\job\domain\ProficiencyLevel.class
 com\manoj\job\dto\response\ResumeResponse$ResumeResponseBuilder.class
 com\manoj\job\domain\WorkMode.class
 com\manoj\job\dto\response\AwardResponse.class
+com\manoj\job\dto\response\SavedJobResponse$SavedJobResponseBuilder.class
 com\manoj\job\dto\response\JobCategoryResponse.class
 com\manoj\job\dto\response\ResumeSkillResponse$ResumeSkillResponseBuilder.class
 com\manoj\job\dto\response\CompanyResponse$CompanyResponseBuilder.class
@@ -48,12 +49,9 @@ com\manoj\job\dto\response\CompanyResponse.class
 com\manoj\job\domain\UserStatus.class
 com\manoj\job\dto\response\ApplicationResponse.class
 com\manoj\job\domain\JobType.class
-com\manoj\job\dto\ResumeSkillResponse$ResumeSkillResponseBuilder.class
-com\manoj\job\dto\ResumeSkillResponse.class
 com\manoj\job\dto\response\JobResponse$JobResponseBuilder.class
 com\manoj\job\domain\CompanySize.class
 com\manoj\job\dto\response\JobTagResponse.class
-com\manoj\job\dto\request\CompanyRequest.class
 com\manoj\job\domain\CompanyStatus.class
 com\manoj\job\dto\response\CertificationResponse.class
 com\manoj\job\dto\response\AwardResponse$AwardResponseBuilder.class

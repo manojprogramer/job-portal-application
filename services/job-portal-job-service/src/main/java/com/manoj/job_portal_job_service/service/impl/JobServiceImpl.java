@@ -1,6 +1,8 @@
 package com.manoj.job_portal_job_service.service.impl;
 
 import com.manoj.job.domain.JobStatus;
+import com.manoj.job.dto.response.CompanyResponse;
+import com.manoj.job_portal_job_service.client.CompanyClient;
 import com.manoj.job_portal_job_service.model.JobCategory;
 import com.manoj.job_portal_job_service.model.JobSkill;
 import com.manoj.job_portal_job_service.model.JobTag;
@@ -40,6 +42,9 @@ public class JobServiceImpl implements JobService {
     @Autowired
     private JobTagService jobTagService;
 
+    @Autowired
+    private CompanyClient companyClient;
+
     @Override
     public JobResponse createJob(Long employerId, JobRequest request) throws Exception {
         JobCategory category = jobCategoryService.getCategoryEntityById(request.getCategoryId());
@@ -49,13 +54,16 @@ public class JobServiceImpl implements JobService {
         Set<JobTag> jobTags = request.getTagIds() != null
                 ? jobTagService.getTagsByIds(request.getTagIds())
                 : Collections.emptySet();
+
+        CompanyResponse company = companyClient.getMyCompany(employerId);
+        Long companyId = company.getId();
         Job job = Job.builder()
                 .title(request.getTitle())
                 .description(request.getDescription())
                 .requirements(request.getRequirements())
                 .responsibilities(request.getResponsibilities())
                 .benefits(request.getBenefits())
-                .companyId(request.getCompanyId())
+                .companyId(companyId)
                 .employerId(employerId)
                 .category(category)
                 .skills(jobSkills)
@@ -70,7 +78,7 @@ public class JobServiceImpl implements JobService {
                 .expiredAt(request.getExpiredAt())
                 .build();
         Job jobs = jobRepo.save(job);
-        return JobMapper.convertToResponse(job);
+        return convertToResponse(job);
     }
 
     private SalaryRange buildSalaryRange(JobRequest request) {
@@ -93,20 +101,20 @@ public class JobServiceImpl implements JobService {
     @Override
     public JobResponse getJobById(Long id) throws Exception {
         Job job = jobRepo.findById(id).orElseThrow(() -> new Exception("Job Not Found"));
-        return JobMapper.convertToResponse(job);
+        return convertToResponse(job);
     }
 
     @Override
     public List<JobResponse> getJobs(JobSearchRequest request) {
         List<Job> jobs = jobRepo.findAll(JobSpecification.build(request));
-        return jobs.stream().map(JobMapper::convertToResponse)
+        return jobs.stream().map(this::convertToResponse)
                 .collect(Collectors.toList());
     }
 
     @Override
     public List<JobResponse> getJobsByCompany(Long companyId) {
         List<Job> jobs = jobRepo.findByCompanyId(companyId);
-        return jobs.stream().map(JobMapper::convertToResponse)
+        return jobs.stream().map(this::convertToResponse)
                 .collect(Collectors.toList());
     }
 
@@ -140,7 +148,7 @@ public class JobServiceImpl implements JobService {
         job.setApplicationDeadline(request.getApplicationDeadLine());
         job.setExpiredAt(request.getExpiredAt());
 
-        return JobMapper.convertToResponse(jobRepo.save(job));
+        return convertToResponse(jobRepo.save(job));
     }
 
     @Override
@@ -152,7 +160,7 @@ public class JobServiceImpl implements JobService {
         job.setJobStatus(JobStatus.OPEN);
         job.setPublishedAt(LocalDateTime.now());
         job.setActive(true);
-        return JobMapper.convertToResponse(jobRepo.save(job));
+        return convertToResponse(jobRepo.save(job));
     }
 
     private void assertEmployer(Job job, Long employerId) throws Exception {
@@ -168,7 +176,7 @@ public class JobServiceImpl implements JobService {
         job.setJobStatus(JobStatus.CLOSED);
         job.setClosedAt(LocalDateTime.now());
         job.setActive(false);
-        return JobMapper.convertToResponse(job);
+        return convertToResponse(job);
     }
 
     @Override
@@ -185,6 +193,12 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public List<JobResponse> getAllJobsAdmin() {
-        return jobRepo.findAll().stream().map(JobMapper :: convertToResponse).collect(Collectors.toList());
+        return jobRepo.findAll().stream().map(this::convertToResponse).collect(Collectors.toList());
     }
+    public  JobResponse convertToResponse(Job job) {
+        System.out.println(job.getCompanyId());
+        CompanyResponse companyResponse = companyClient.getCompanyById(job.getCompanyId());
+        return JobMapper.toResponse(job,companyResponse);
+    }
+
 }
