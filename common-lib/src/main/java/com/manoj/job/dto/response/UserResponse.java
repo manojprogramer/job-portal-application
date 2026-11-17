@@ -22,7 +22,7 @@ public class UserResponse {
     private String profileImage;
     private UserRole role;
     private UserStatus status;
-    private boolean verified;
+//    private boolean verified;
     private LocalDateTime lastLogin;
     private LocalDateTime createdAt;
 }

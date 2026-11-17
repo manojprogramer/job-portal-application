@@ -25,11 +25,11 @@ public class UserController {
         return ResponseEntity.ok(UserMapper.toDTO(user));
     }
 
-    @PutMapping("/profile")
+    @PutMapping("/update")
     public ResponseEntity<UserResponse> updateProfile(@RequestHeader("X-User-Email") String email, @RequestBody @Valid UpdateUserRequest req) throws Exception {
         return  ResponseEntity.ok(userService.updateProfile(email,req));
     }
-    @GetMapping("profile/{userId}")
+    @GetMapping("/{userId}")
     public ResponseEntity<UserResponse> getByUserId(@PathVariable Long userId) throws Exception {
         return ResponseEntity.ok(UserMapper.toDTO(userService.getUserById(userId)));
     }
@@ -37,15 +37,15 @@ public class UserController {
     public ResponseEntity<List<UserResponse>> getUsers(){
         return ResponseEntity.ok(UserMapper.toDTOList(userService.getAllUsers()));
     }
-    @PatchMapping("users/{userId}/suspend")
+    @PatchMapping("/{userId}/suspend")
     public ResponseEntity<UserResponse> suspendUser(@PathVariable Long userId) throws Exception {
         return ResponseEntity.ok(userService.suspendUser(userId));
     }
-    @PatchMapping("users/{userId}/activate")
+    @PatchMapping("/{userId}/activate")
     public ResponseEntity<UserResponse> activateUser(@PathVariable Long userId) throws Exception {
         return ResponseEntity.ok(userService.activateUser(userId));
     }
-    @DeleteMapping("users/{userId}/delete")
+    @DeleteMapping("/{userId}/delete")
     public ResponseEntity<UserResponse> deleteUser(@PathVariable Long userId) throws Exception {
         return ResponseEntity.ok(userService.deleteUser(userId));
     }

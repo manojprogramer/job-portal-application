@@ -39,6 +39,5 @@ public class CompanyResponse {
     private List<SocialLinkResponse> socialLinks;
 
     private LocalDateTime createdAt;
-    private LocalDateTime verifiedAt;
     private LocalDateTime updatedAt;
 }

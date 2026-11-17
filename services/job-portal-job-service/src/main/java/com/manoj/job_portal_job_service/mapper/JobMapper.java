@@ -21,6 +21,7 @@ public class JobMapper {
         Set<JobSkillResponse> jobSkillResponses =  job.getSkills() != null
                 ? job.getSkills().stream().map(JobSkillMapper::toResponse).collect(Collectors.toSet())
                 : Collections.emptySet() ;
+
         Set<JobTagResponse> jobTagResponses = job.getTags() != null
                 ? job.getTags().stream().map(JobTagMapper::toResponse).collect(Collectors.toSet())
                 : Collections.emptySet();
@@ -28,6 +29,7 @@ public class JobMapper {
         SalaryRange salary = job.getSalaryRange();
         return JobResponse.builder()
                 .id(job.getId())
+                .employerId(job.getEmployerId())
                 .title(job.getTitle())
                 .description(job.getDescription())
                 .requirements(job.getRequirements())

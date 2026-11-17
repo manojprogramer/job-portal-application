@@ -36,6 +36,8 @@ public class CompanyMapper {
                 .socialLinks(socialLinkResponses)
                 .createdAt(company.getCreatedAt())
                 .updatedAt(company.getUpdatedAt())
+                .companyStatus(company.getStatus())
+                .verified(company.getIsVerified())
                 .build();
     }
     public static List<CompanyResponse> toResponseList(List<Company> companies){

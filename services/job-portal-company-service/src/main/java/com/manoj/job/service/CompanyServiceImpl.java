@@ -50,6 +50,8 @@ public class CompanyServiceImpl implements CompanyService{
         company.setEmail(request.getEmail());
         company.setPhone(request.getPhone());
         company.setSocialLink(mapSocialLinks(request.getSocialLinks()));
+        company.setStatus(request.getCompanyStatus());
+        company.setIsVerified(true);
         Company c = companyRepo.save(company);
         return CompanyMapper.toResponse(c);
     }

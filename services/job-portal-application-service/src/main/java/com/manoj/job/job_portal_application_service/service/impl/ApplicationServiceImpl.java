@@ -1,10 +1,11 @@
 package com.manoj.job.job_portal_application_service.service.impl;
 
 import com.manoj.job.domain.ApplicationStatus;
-import com.manoj.job.dto.response.ApplicationResponse;
-import com.manoj.job.dto.response.CompanyResponse;
-import com.manoj.job.dto.response.JobResponse;
-import com.manoj.job.dto.response.UserResponse;
+import com.manoj.job.dto.response.*;
+import com.manoj.job.job_portal_application_service.client.CompanyClient;
+import com.manoj.job.job_portal_application_service.client.JobClient;
+import com.manoj.job.job_portal_application_service.client.ResumeClient;
+import com.manoj.job.job_portal_application_service.client.UserClient;
 import com.manoj.job.job_portal_application_service.mapper.ApplicationMapper;
 import com.manoj.job.job_portal_application_service.model.Application;
 import com.manoj.job.job_portal_application_service.model.ApplicationNote;
@@ -30,16 +31,30 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Autowired
     private ApplicationNoteRepo applicationNoteRepo;
 
+    @Autowired
+    private JobClient jobClient;
+
+    @Autowired
+    private ResumeClient resumeClient;
+
+    @Autowired
+    private CompanyClient companyClient;
+
+    @Autowired
+    private UserClient userClient;
+
     @Override
     public ApplicationResponse createApplication(Long candidateId, CreateApplicationRequest request) throws Exception {
         if(applicationRepo.existsByCandidateIdAndJobId(candidateId,request.getJobId()))
             throw new Exception("you have already applied");
-        Long companyId = 1L;
-        Long employeeId = 1L;
 
-//        todo : fetch job
 
-//        todo : fetch resume
+        JobResponse jobResponse = jobClient.getJobById(request.getJobId());
+        Long companyId = jobResponse.getCompanyResponse().getId();
+        System.out.println(jobResponse.getEmployerId());
+        Long employeeId = jobResponse.getEmployerId();
+
+        ResumeResponse resumeResponse = resumeClient.getResumeById(request.getResumeId(),candidateId);
 
         Application application = ApplicationMapper.toEntity(request,candidateId,companyId,employeeId);
 
@@ -69,8 +84,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     @Override
     public List<ApplicationResponse> getApplicationsForCompany(Long userId, CompanyApplicationFilterRequest filter) {
 
-//        todo : fetch company by ownerId
-        Long companyId = 1L;
+        Long companyId = companyClient.getCompanyById(userId).getId();
         Sort sort = buildSort(filter.getSortBy());
         return applicationRepo.findAll(ApplicationSpecification.forCompanyWithFilters(
                 companyId,
@@ -129,9 +143,10 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     public ApplicationResponse buildFullResponse(Application application){
-        JobResponse jobResponse = JobResponse.builder().id(application.getId()).build();
-        CompanyResponse companyResponse = CompanyResponse.builder().id(application.getCompanyId()).build();
-        UserResponse userResponse = UserResponse.builder().id(application.getCandidateId()).build();
+
+        JobResponse jobResponse = jobClient.getJobById(application.getJobId());
+        CompanyResponse companyResponse = companyClient.getCompanyById(application.getCompanyId());
+        UserResponse userResponse = userClient.getByUserId(application.getCandidateId());
         List<ApplicationNote> notes = applicationNoteRepo.findByApplicationId(application.getId());
         return ApplicationMapper.toResponse(application,
                 notes,

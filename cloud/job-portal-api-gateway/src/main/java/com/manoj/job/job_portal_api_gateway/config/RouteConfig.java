@@ -20,19 +20,12 @@ public class RouteConfig {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @Bean
-    public RouterFunction<ServerResponse> authRoutes(){
-        return GatewayRouterFunctions.route("auth-routes").route(RequestPredicates.path("/auth/**"),HandlerFunctions.http())
-                .filter(LoadBalancerFilterFunctions.lb("job-portal-user-service"))
-                .build();
-    }
-
 //    =====================Admin only Routes (JWT+Role_Admin) ===============
 
 
     @Bean
     public RouterFunction<ServerResponse> adminRoutes(){
-        return GatewayRouterFunctions.route("admin-routes").route(RequestPredicates.path("/api/admin/**"),HandlerFunctions.http())
+        return GatewayRouterFunctions.route("admin-routes").route(RequestPredicates.path("/auth/api/admin/**"),HandlerFunctions.http())
                 .filter(LoadBalancerFilterFunctions.lb("job-portal-user-service"))
                 .before(this::jwtAuthFilter)
                 .before(request -> requireRole(request,"Role_Admin"))
@@ -50,7 +43,9 @@ public class RouteConfig {
     @Bean
     public RouterFunction<ServerResponse> userServiceRoutes(){
         return GatewayRouterFunctions.route("user-service-routes")
-                .route(RequestPredicates.path("/api/user/**"),HandlerFunctions.http())
+                .route(RequestPredicates.path("/auth/api/users")
+                        .or(RequestPredicates.path("/auth/api/users/**")),
+                        HandlerFunctions.http())
                 .filter(LoadBalancerFilterFunctions.lb("job-portal-user-service"))
                 .before(this::jwtAuthFilter)
                 .build();
@@ -99,6 +94,16 @@ public class RouteConfig {
                 .before(this::jwtAuthFilter)
                 .build();
     }
+    @Bean
+    public RouterFunction<ServerResponse> aiServiceRoutes(){
+        return GatewayRouterFunctions.route("ai-service-routes")
+                .route(RequestPredicates.path("/api/ai/**"),HandlerFunctions.http())
+                .filter(LoadBalancerFilterFunctions.lb("job-portal-ai-service"))
+                .before(this::jwtAuthFilter)
+                .build();
+
+    }
+
 
 //    Jwt Filter
     private ServerRequest jwtAuthFilter(ServerRequest request){

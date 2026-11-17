@@ -2,7 +2,9 @@ package com.manoj.job_portal_job_service.service.impl;
 
 import com.manoj.job.domain.JobStatus;
 import com.manoj.job.dto.response.CompanyResponse;
+import com.manoj.job.dto.response.JobSkillResponse;
 import com.manoj.job_portal_job_service.client.CompanyClient;
+import com.manoj.job_portal_job_service.mapper.JobSkillMapper;
 import com.manoj.job_portal_job_service.model.JobCategory;
 import com.manoj.job_portal_job_service.model.JobSkill;
 import com.manoj.job_portal_job_service.model.JobTag;
@@ -100,6 +102,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public JobResponse getJobById(Long id) throws Exception {
+        System.out.println(id);
         Job job = jobRepo.findById(id).orElseThrow(() -> new Exception("Job Not Found"));
         return convertToResponse(job);
     }
