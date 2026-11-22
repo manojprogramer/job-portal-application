@@ -1,0 +1,23 @@
+package com.manoj.job.job_portal_ai_service.payload;
+
+
+import jakarta.validation.constraints.Digits;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+
+import java.util.List;
+
+@Data
+public class JobDescriptionRequest {
+
+    @NotBlank(message = "Job Title is required")
+    private String title;
+
+    private List<String> skills;
+    private String experienceLevel;
+    private String jobType;
+    private String workMode;
+    private String category;
+    private String additionalContext;
+
+}

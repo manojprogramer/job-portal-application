@@ -21,6 +21,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByEmail(String email) throws Exception {
         User user = userRepo.findByEmail(email);
+        System.out.println(email);
         if(user == null) throw new Exception("User Not Found");
         return user;
     }

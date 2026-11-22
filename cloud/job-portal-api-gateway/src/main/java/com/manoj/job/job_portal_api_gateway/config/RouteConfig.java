@@ -2,10 +2,9 @@ package com.manoj.job.job_portal_api_gateway.config;
 
 import com.manoj.job.job_portal_api_gateway.util.JwtConstant;
 import com.manoj.job.job_portal_api_gateway.util.JwtUtil;
-import org.apache.catalina.Server;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.server.mvc.filter.LoadBalancerFilterFunctions;
-import org.springframework.cloud.gateway.server.mvc.handler.GatewayDelegatingRouterFunction;
 import org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions;
 import org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions;
 import org.springframework.context.annotation.Bean;
@@ -43,11 +42,20 @@ public class RouteConfig {
     @Bean
     public RouterFunction<ServerResponse> userServiceRoutes(){
         return GatewayRouterFunctions.route("user-service-routes")
-                .route(RequestPredicates.path("/auth/api/users")
-                        .or(RequestPredicates.path("/auth/api/users/**")),
+                .route((RequestPredicates.path("/auth/api/users/**")),
                         HandlerFunctions.http())
                 .filter(LoadBalancerFilterFunctions.lb("job-portal-user-service"))
                 .before(this::jwtAuthFilter)
+                .build();
+    }
+    @Bean
+    public RouterFunction<ServerResponse> authServiceRoutes() {
+        return GatewayRouterFunctions.route("auth-service-routes")
+                .route(
+                        RequestPredicates.path("/auth/**"),
+                        HandlerFunctions.http()
+                )
+                .filter(LoadBalancerFilterFunctions.lb("job-portal-user-service"))
                 .build();
     }
     @Bean
