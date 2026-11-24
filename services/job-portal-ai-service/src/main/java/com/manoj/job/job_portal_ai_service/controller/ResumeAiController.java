@@ -1,7 +1,7 @@
 package com.manoj.job.job_portal_ai_service.controller;
 
 import com.manoj.job.job_portal_ai_service.payload.*;
-import com.manoj.job.job_portal_ai_service.service.ResumeAiService;
+import com.manoj.job.job_portal_ai_service.service.impl.ResumeAiServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/ai/resume")
 public class ResumeAiController {
     @Autowired
-    private ResumeAiService resumeAiService;
+    private ResumeAiServiceImpl resumeAiService;
 
     @PostMapping("/summary")
     public ResponseEntity<AiTextResponse> generateSummary(@RequestBody ResumeSummaryRequest request) throws Exception {

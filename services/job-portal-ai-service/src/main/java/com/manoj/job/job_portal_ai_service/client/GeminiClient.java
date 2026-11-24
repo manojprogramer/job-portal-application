@@ -6,6 +6,7 @@ import com.google.genai.types.GenerateContentConfig;
 import com.google.genai.types.GenerateContentResponse;
 import com.google.genai.types.Part;
 import com.manoj.job.job_portal_ai_service.config.GeminiProperties;
+import jakarta.annotation.PostConstruct;
 import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,22 @@ public class GeminiClient {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    public GeminiClient(){
+        System.out.println("Gemini Bean is created");
+    }
+
+    @PostConstruct
+    public void checkApiKey() {
+        System.out.println(geminiProperties.getModel());
+        String apiKey = geminiProperties.getKey();
+        System.out.println("API KEY LOADED: " +
+                (apiKey != null && !apiKey.isBlank()));
+
+        System.out.println("API KEY LENGTH: " +
+                (apiKey == null ? 0 : apiKey.length()));
+
+    }
 
     public String generateText(String systemInstruction,String prompt, double temperature, int maxTokens) throws Exception {
         return callText(systemInstruction,
@@ -40,19 +57,50 @@ public class GeminiClient {
         return callJson(systemInstruction,prompt,responseType);
     }
 
+
     public String callText(String systemInstruction,
                            String prompt,
                            float temperature,
                            int maxTokens) throws Exception {
-        try{
-            GenerateContentConfig config = buildConfig(systemInstruction,temperature,maxTokens,false);
-            GenerateContentResponse response = genAiClient.models.generateContent(geminiProperties.getModel(),prompt,config);
+        try {
+            GenerateContentConfig config =
+                    buildConfig(systemInstruction, temperature, maxTokens, false);
+
+            System.out.println("MODEL: " + geminiProperties.getModel());
+            System.out.println("PROMPT LENGTH: " + prompt.length());
+
+            GenerateContentResponse response =
+                    genAiClient.models.generateContent(
+                            geminiProperties.getModel(),
+                            prompt,
+                            config
+                    );
+
+            System.out.println("GEMINI RESPONSE: " + response.text());
+
             return response.text();
-        }
-        catch (Exception e){
-            throw  new Exception("Failed to get response from gemini"+e.getMessage());
+
+        } catch (Exception e) {
+            System.err.println("========== GEMINI ERROR ==========");
+            e.printStackTrace();
+            throw new RuntimeException("Gemini API failed", e);
         }
     }
+
+    //    public String callText(String systemInstruction,
+//                           String prompt,
+//                           float temperature,
+//                           int maxTokens) throws Exception {
+//        try{
+//            GenerateContentConfig config = buildConfig(systemInstruction,temperature,maxTokens,false);
+//
+//            GenerateContentResponse response = genAiClient.models.generateContent(geminiProperties.getModel(),prompt,config);
+//            return response.text();
+//        }
+//        catch (Exception e){
+//            throw  new Exception("Failed to get response from gemini"+e.getMessage());
+//        }
+//    }
     public <T> T callJson(String systemInstruction,
                           String prompt,
                           Class<T> responseType) throws Exception {
@@ -66,18 +114,40 @@ public class GeminiClient {
             throw  new Exception("Failed to get response from gemini"+e.getMessage());
         }
     }
+    private GenerateContentConfig buildConfig(
+            String systemInstruction,
+            float temperature,
+            int maxTokens,
+            boolean jsonMode) {
 
-    private GenerateContentConfig buildConfig(String systemInstruction, float temperature, int maxTokens, boolean josnMode) {
-        GenerateContentConfig.Builder builder  = GenerateContentConfig.builder()
-                .temperature((float) temperature).maxOutputTokens(maxTokens);
+        GenerateContentConfig.Builder builder =
+                GenerateContentConfig.builder()
+                        .maxOutputTokens(maxTokens);
 
-        if(systemInstruction != null  && !systemInstruction.isBlank()){
-            builder.systemInstruction(Content.fromParts(Part.fromText(systemInstruction)));
+        if (systemInstruction != null && !systemInstruction.isBlank()) {
+            builder.systemInstruction(
+                    Content.fromParts(Part.fromText(systemInstruction))
+            );
         }
-        if(josnMode){
+
+        if (jsonMode) {
             builder.responseMimeType("application/json");
-
         }
+
         return builder.build();
     }
+
+//    private GenerateContentConfig buildConfig(String systemInstruction, float temperature, int maxTokens, boolean josnMode) {
+//        GenerateContentConfig.Builder builder  = GenerateContentConfig.builder()
+//                .temperature((float) temperature).maxOutputTokens(maxTokens);
+//
+//        if(systemInstruction != null  && !systemInstruction.isBlank()){
+//            builder.systemInstruction(Content.fromParts(Part.fromText(systemInstruction)));
+//        }
+//        if(josnMode){
+//            builder.responseMimeType("application/json");
+//
+//        }
+//        return builder.build();
+//    }
 }
